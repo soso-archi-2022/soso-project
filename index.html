@@ -13,7 +13,10 @@
     padding: 0;
 }
 
+/* 스크롤바 공간을 항상 확보 */
 html {
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
     scroll-behavior: auto;
 }
 
@@ -37,14 +40,21 @@ header {
     justify-content: center;
     background: #fff;
     position: relative;
+    left: 0;
+    transform: none;
     z-index: 10;
 }
 
 .logo {
+    display: block;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     color: #477653;
     text-decoration: none;
     line-height: 1.2;
+    transform: none;
 }
 
 .logo-korean {
@@ -62,11 +72,13 @@ header {
 
 /* NAVIGATION */
 .main-nav {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 42px;
     margin-top: 23px;
+    transform: none;
 }
 
 .main-nav a {
@@ -569,18 +581,9 @@ footer {
             <h2 class="soso-section-title">EDUCATION & LICENSE</h2>
 
             <table class="profile-table">
-                <tr>
-                    <td>2022</td>
-                    <td>건축사 (KIRA)</td>
-                </tr>
-                <tr>
-                    <td>2013</td>
-                    <td>건축기사</td>
-                </tr>
-                <tr>
-                    <td>2007</td>
-                    <td>한양대학교 건축전문대학원 건축디자인 석사</td>
-                </tr>
+                <tr><td>2022</td><td>건축사 (KIRA)</td></tr>
+                <tr><td>2013</td><td>건축기사</td></tr>
+                <tr><td>2007</td><td>한양대학교 건축전문대학원 건축디자인 석사</td></tr>
             </table>
         </div>
 
@@ -588,22 +591,10 @@ footer {
             <h2 class="soso-section-title">ACTIVITIES</h2>
 
             <table class="profile-table">
-                <tr>
-                    <td>2023.03 ~</td>
-                    <td>구로구 건축위원회 위원</td>
-                </tr>
-                <tr>
-                    <td>2023.05 ~</td>
-                    <td>한국산업인력공단 국가기술자격시험 건축분야 시험(채점)위원</td>
-                </tr>
-                <tr>
-                    <td>2022.03 ~</td>
-                    <td>그린리모델링 건축사</td>
-                </tr>
-                <tr>
-                    <td>2022.01 ~</td>
-                    <td>구로구·서울시 건축사회 및 대한건축사협회 정회원</td>
-                </tr>
+                <tr><td>2023.03 ~</td><td>구로구 건축위원회 위원</td></tr>
+                <tr><td>2023.05 ~</td><td>한국산업인력공단 국가기술자격시험 건축분야 시험(채점)위원</td></tr>
+                <tr><td>2022.03 ~</td><td>그린리모델링 건축사</td></tr>
+                <tr><td>2022.01 ~</td><td>구로구·서울시 건축사회 및 대한건축사협회 정회원</td></tr>
             </table>
         </div>
 
@@ -611,34 +602,13 @@ footer {
             <h2 class="soso-section-title">CAREER</h2>
 
             <table class="profile-table">
-                <tr>
-                    <td>2022.01 ~ 현재</td>
-                    <td>소소 건축사사무소</td>
-                </tr>
-                <tr>
-                    <td>2019</td>
-                    <td>(주)반</td>
-                </tr>
-                <tr>
-                    <td>2014</td>
-                    <td>(주)건축사사무소 에스파스</td>
-                </tr>
-                <tr>
-                    <td>2012</td>
-                    <td>(주)머릿돌에이스</td>
-                </tr>
-                <tr>
-                    <td>2007</td>
-                    <td>(주)엄앤드이</td>
-                </tr>
-                <tr>
-                    <td>2006</td>
-                    <td>(주)건원</td>
-                </tr>
-                <tr>
-                    <td>2004</td>
-                    <td>(주)아키플랜</td>
-                </tr>
+                <tr><td>2022.01 ~ 현재</td><td>소소 건축사사무소</td></tr>
+                <tr><td>2019</td><td>(주)반</td></tr>
+                <tr><td>2014</td><td>(주)건축사사무소 에스파스</td></tr>
+                <tr><td>2012</td><td>(주)머릿돌에이스</td></tr>
+                <tr><td>2007</td><td>(주)엄앤드이</td></tr>
+                <tr><td>2006</td><td>(주)건원</td></tr>
+                <tr><td>2004</td><td>(주)아키플랜</td></tr>
             </table>
         </div>
 
@@ -685,9 +655,7 @@ footer {
 </div>
 
 <script>
-/* PROJECT DATA
-   실제 프로젝트 이미지와 프로젝트명에 맞게 아래 항목을 교체하면 됩니다.
-*/
+/* PROJECT DATA */
 const projects = [
     {
         name: "Public Architecture Project 01",
@@ -783,7 +751,7 @@ function showPage(page) {
 
     projectGrid.innerHTML = "";
 
-    pageProjects.forEach((project, index) => {
+    pageProjects.forEach(project => {
         const item = document.createElement("div");
         item.className = "project-item";
 
@@ -794,10 +762,7 @@ function showPage(page) {
             <div class="project-name">${project.name}</div>
         `;
 
-        item.addEventListener("click", () => {
-            openModal(project);
-        });
-
+        item.addEventListener("click", () => openModal(project));
         projectGrid.appendChild(item);
     });
 
@@ -825,10 +790,7 @@ nextBtn.addEventListener("click", () => {
     }
 });
 
-/* NAVIGATION
-   메뉴를 클릭해도 스크롤을 강제로 이동시키지 않습니다.
-   따라서 상단 회사명과 메뉴의 화면상 위치가 유지됩니다.
-*/
+/* NAVIGATION */
 const navLinks = document.querySelectorAll(".main-nav a");
 const logoLink = document.querySelector(".logo");
 const contentViews = document.querySelectorAll(".content-view");
@@ -848,7 +810,7 @@ function changeView(targetId, clickedLink) {
 
     targetView.classList.add("active");
 
-    if (clickedLink && clickedLink.classList.contains("main-nav-link")) {
+    if (clickedLink) {
         clickedLink.classList.add("active");
     } else {
         const matchingLink = document.querySelector(
@@ -864,12 +826,14 @@ function changeView(targetId, clickedLink) {
 
     closeModal();
 
-    /* 중요: 메뉴 클릭 시 window.scrollTo()를 실행하지 않음 */
+    /*
+      메뉴 전환 시 스크롤 이동 없음.
+      스크롤바 공간도 항상 확보되어
+      콘텐츠 높이 변화에 따른 가로 위치 이동을 방지.
+    */
 }
 
 navLinks.forEach(link => {
-    link.classList.add("main-nav-link");
-
     link.addEventListener("click", event => {
         event.preventDefault();
         changeView(link.dataset.view, link);
