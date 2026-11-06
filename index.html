@@ -4,215 +4,369 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="소소 건축사사무소 - 공공건축, 일반건축, 용도변경">
 <title>소소 건축사사무소 | SOSO ARCHITECTS</title>
-
+<meta name="description" content="소소 건축사사무소 - 작은것의 가치를 추구합니다.">
 <style>
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
-  color: #252525;
-  font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
-  line-height: 1.7;
+  padding: 0;
 }
-a { color: inherit; text-decoration: none; }
+
+body {
+  font-family: Arial, "Noto Sans KR", sans-serif;
+  background: #fff;
+  color: #222;
+}
+
 header {
-  height: 86px;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 7%;
-  border-bottom: 1px solid #eee;
-  background: white;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  padding: 0 6%;
 }
-.logo { font-size: 23px; font-weight: 800; letter-spacing: -1px; }
-.logo span { color: #df7543; }
+
+.logo {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: #d87932;
+}
+
 .logo small {
   display: block;
   font-size: 10px;
   font-weight: 400;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
+  margin-top: 4px;
 }
-nav { display: flex; gap: 30px; font-size: 14px; }
-nav a:hover { color: #df7543; }
 
-.hero {
-  min-height: 590px;
-  padding: 120px 10%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: linear-gradient(120deg, #eeeeeb, #d8d9d5);
+.header-right {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: #777;
 }
-.hero-label { color: #b9653e; letter-spacing: 4px; font-size: 12px; }
-.hero h1 {
-  font-size: clamp(38px, 6vw, 68px);
-  line-height: 1.3;
+
+main {
+  max-width: 1500px;
+  margin: 65px auto 100px;
+  padding: 0 6%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 27px;
   font-weight: 500;
-  letter-spacing: -3px;
-  margin: 25px 0;
+  letter-spacing: 5px;
+  margin-bottom: 55px;
 }
-.hero h1 span { color: #d87545; }
-.hero p { color: #666; font-size: 16px; }
-.hero-button {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 13px 28px;
-  border: 1px solid #333;
-  width: fit-content;
-  font-size: 13px;
-}
-section { padding: 100px 10%; }
-.section-label {
-  color: #d87545;
-  font-size: 12px;
-  letter-spacing: 3px;
-}
-h2 { font-size: 34px; letter-spacing: -1px; margin: 12px 0 25px; }
-.intro { color: #777; max-width: 650px; }
-.services { background: #f7f7f5; }
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 45px;
-}
-.service {
-  background: white;
-  padding: 35px 28px;
-  min-height: 220px;
-  border-top: 3px solid #d87545;
-}
-.service b { font-size: 21px; }
-.service p { font-size: 14px; color: #777; }
-.number { color: #d87545; font-size: 12px; margin-bottom: 20px; }
-.projects { background: white; }
+
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 40px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
 }
+
 .project {
-  min-height: 230px;
-  background: #e8e8e5;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  padding: 25px;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  cursor: pointer;
+  background: #ddd;
+  border: 0;
+  width: 100%;
+  display: block;
 }
-.project small { color: #b9653e; }
-.project b { font-size: 20px; }
-.contact {
-  background: #292929;
-  color: white;
+
+.project img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s ease;
 }
-.contact p { color: #ccc; }
-.contact a { color: #e99062; }
+
+.project::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.28);
+  transition: background .35s ease;
+}
+
+.project:hover img {
+  transform: scale(1.06);
+}
+
+.project:hover::after {
+  background: rgba(0,0,0,.48);
+}
+
+.project-name {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  text-align: center;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 5px rgba(0,0,0,.35);
+}
+
 footer {
-  background: #202020;
-  color: #aaa;
-  padding: 25px 10%;
-  font-size: 12px;
+  padding: 35px 6%;
+  border-top: 1px solid #eee;
+  text-align: center;
+  color: #999;
+  font-size: 11px;
+  letter-spacing: 1px;
+  line-height: 2;
 }
-@media(max-width:700px) {
-  header { padding: 0 5%; height: auto; min-height: 75px; flex-wrap: wrap; }
-  nav { width: 100%; gap: 17px; padding: 12px 0; overflow-x: auto; font-size: 12px; }
-  .hero { min-height: 480px; padding: 80px 7%; }
-  section { padding: 70px 7%; }
-  .service-grid, .project-grid { grid-template-columns: 1fr; }
-  h2 { font-size: 28px; }
+
+/* 프로젝트 상세 팝업 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  background: rgba(0,0,0,.88);
+  padding: 35px 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-content {
+  width: min(950px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  position: relative;
+}
+
+.modal-image {
+  width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  display: block;
+  background: #eee;
+}
+
+.modal-info {
+  padding: 25px 30px 30px;
+}
+
+.modal-info h2 {
+  font-size: 21px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.modal-info p {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.8;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  z-index: 3;
+  border: 0;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  font-size: 30px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+  }
+
+  main {
+    margin-top: 45px;
+  }
+
+  .section-title {
+    margin-bottom: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    height: 75px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-name {
+    font-size: 16px;
+  }
+
+  main {
+    padding: 0 5%;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <header>
-  <a class="logo" href="#home">소소 <span>건축사사무소</span>
+  <div class="logo">
+    <span>소소</span> 건축사사무소
     <small>SOSO ARCHITECTS</small>
-  </a>
-  <nav>
-    <a href="#about">ABOUT</a>
-    <a href="#services">BUSINESS</a>
-    <a href="#projects">PROJECTS</a>
-    <a href="#contact">CONTACT</a>
-  </nav>
+  </div>
+  <div class="header-right">ARCHITECTURE · DESIGN</div>
 </header>
 
 <main>
-<div class="hero" id="home">
-  <div class="hero-label">SOSO ARCHITECTS</div>
-  <h1>작은것의 가치를<br><span>추구합니다.</span></h1>
-  <p>공간에 가치를 더하고, 사람과 건축을 연결합니다.</p>
-  <a class="hero-button" href="#about">ABOUT US　→</a>
-</div>
+  <h1 class="section-title">PROJECTS</h1>
 
-<section id="about">
-  <div class="section-label">ABOUT SOSO</div>
-  <h2>소소 건축사사무소</h2>
-  <p class="intro">
-    건축은 단순히 공간을 만드는 일이 아니라<br>
-    사람의 삶과 주변 환경에 새로운 가치를 더하는 일입니다.<br>
-    소소 건축사사무소는 작은 것의 가치를 소중히 여기며<br>
-    합리적이고 완성도 높은 건축을 추구합니다.
-  </p>
-</section>
+  <section class="project-grid" id="projectGrid">
 
-<section class="services" id="services">
-  <div class="section-label">OUR BUSINESS</div>
-  <h2>주요 업무 분야</h2>
-  <p class="intro">다양한 건축 업무를 전문적으로 수행합니다.</p>
-  <div class="service-grid">
-    <div class="service">
-      <div class="number">01 / PUBLIC ARCHITECTURE</div>
-      <b>공공건축</b>
-      <p>공공청사, 주민복합시설, 공공시설 설계 및 건축설계 공모</p>
-    </div>
-    <div class="service">
-      <div class="number">02 / GENERAL ARCHITECTURE</div>
-      <b>일반건축</b>
-      <p>건축물 신축, 증축, 리모델링 및 건축설계·인허가 업무</p>
-    </div>
-    <div class="service">
-      <div class="number">03 / CHANGE OF USE</div>
-      <b>용도변경</b>
-      <p>건축물 용도변경, 대수선, 전유부 변경 및 건축법규 검토</p>
-    </div>
-  </div>
-</section>
+    <button class="project"
+      data-title="프로젝트 01"
+      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+      data-image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=90">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="건축 프로젝트 01">
+      <span class="project-name">프로젝트 01</span>
+    </button>
 
-<section class="projects" id="projects">
-  <div class="section-label">SELECTED WORKS</div>
-  <h2>주요 프로젝트</h2>
-  <p class="intro">소소 건축사사무소의 건축 프로젝트와 수행 실적을 소개합니다.</p>
-  <div class="project-grid">
-    <div class="project">
-      <small>PUBLIC ARCHITECTURE</small>
-      <b>공공건축 프로젝트</b>
-    </div>
-    <div class="project">
-      <small>GENERAL ARCHITECTURE</small>
-      <b>일반건축 프로젝트</b>
-    </div>
-  </div>
-</section>
+    <button class="project"
+      data-title="프로젝트 02"
+      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+      data-image="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=90">
+      <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85" alt="건축 프로젝트 02">
+      <span class="project-name">프로젝트 02</span>
+    </button>
 
-<section class="contact" id="contact">
-  <div class="section-label">CONTACT</div>
-  <h2>건축에 대한 상담을 환영합니다.</h2>
-  <p>소소 건축사사무소</p>
-  <p>전화 : <a href="tel:0269537173">02-6953-7173</a></p>
-  <p>공공건축 · 일반건축 · 용도변경</p>
-</section>
+    <button class="project"
+      data-title="프로젝트 03"
+      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+      data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90">
+      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="건축 프로젝트 03">
+      <span class="project-name">프로젝트 03</span>
+    </button>
+
+    <button class="project"
+      data-title="프로젝트 04"
+      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+      data-image="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90">
+      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85" alt="건축 프로젝트 04">
+      <span class="project-name">프로젝트 04</span>
+    </button>
+
+    <button class="project"
+      data-title="프로젝트 05"
+      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+      data-image="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1600&q=90">
+      <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=900&q=85" alt="건축 프로젝트 05">
+      <span class="project-name">프로젝트 05</span>
+    </button>
+
+    <button class="project"
+      data-title="프로젝트 06"
+      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+      data-image="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=90">
+      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85" alt="건축 프로젝트 06">
+      <span class="project-name">프로젝트 06</span>
+    </button>
+
+    <button class="project"
+      data-title="프로젝트 07"
+      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+      data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90">
+      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="건축 프로젝트 07">
+      <span class="project-name">프로젝트 07</span>
+    </button>
+
+    <button class="project"
+      data-title="프로젝트 08"
+      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+      data-image="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1600&q=90">
+      <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=900&q=85" alt="건축 프로젝트 08">
+      <span class="project-name">프로젝트 08</span>
+    </button>
+
+    <button class="project"
+      data-title="프로젝트 09"
+      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+      data-image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=90">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="건축 프로젝트 09">
+      <span class="project-name">프로젝트 09</span>
+    </button>
+
+  </section>
 </main>
 
 <footer>
-  SOSO ARCHITECTS | 소소 건축사사무소<br>
-  Copyright © SOSO ARCHITECTS. All rights reserved.
+  SOSO ARCHITECTS · 소소 건축사사무소<br>
+  작은것의 가치를 추구합니다.
 </footer>
+
+<div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-content">
+    <button class="close" id="closeModal" aria-label="닫기">&times;</button>
+    <img class="modal-image" id="modalImage" src="" alt="">
+    <div class="modal-info">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+const modal = document.getElementById("projectModal");
+const modalImage = document.getElementById("modalImage");
+const modalTitle = document.getElementById("modalTitle");
+const modalDescription = document.getElementById("modalDescription");
+
+document.querySelectorAll(".project").forEach(project => {
+  project.addEventListener("click", () => {
+    modalTitle.textContent = project.dataset.title;
+    modalDescription.textContent = project.dataset.description;
+    modalImage.src = project.dataset.image;
+    modalImage.alt = project.dataset.title;
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+    document.getElementById("closeModal").focus();
+  });
+});
+
+function closeModal() {
+  modal.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+document.getElementById("closeModal").addEventListener("click", closeModal);
+
+modal.addEventListener("click", event => {
+  if (event.target === modal) closeModal();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeModal();
+});
+</script>
+
 </body>
 </html>
