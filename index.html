@@ -4,1325 +4,916 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>소소 건축사사무소 | SOSO ARCHITECTS</title>
-<meta name="description" content="소소 건축사사무소 - 작은것의 가치를 추구합니다.">
+<title>SOSO ARCHITECTS | 소소 건축사사무소</title>
 
 <style>
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: auto;
+}
 
 body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-family: Arial, "Noto Sans KR", sans-serif;
-  background: #fff;
-  color: #222;
+    font-family: Arial, "Noto Sans KR", sans-serif;
+    color: #333;
+    background: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* HEADER */
 header {
-  height: 125px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
+    width: 100%;
+    height: 125px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    position: relative;
+    z-index: 10;
 }
 
-.logo { text-align: center; }
+.logo {
+    text-align: center;
+    color: #477653;
+    text-decoration: none;
+    line-height: 1.2;
+}
 
 .logo-korean {
-  white-space: nowrap;
-  font-size: 34.5px;
-  font-weight: 600;
-  letter-spacing: -1.2px;
-  line-height: 1.15;
-  color: #477653;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 2px;
 }
 
 .logo-english {
-  display: block;
-  margin-top: 1px;
-  font-size: 13.2px;
-  font-weight: 400;
-  letter-spacing: 2.5px;
-  line-height: 1.2;
-  color: #777;
+    margin-top: 5px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 5px;
 }
 
 /* NAVIGATION */
 .main-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-  margin: 0 auto 35px;
-  text-align: center;
-  line-height: 1.2;
-  font-size: 17px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  color: #888;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 42px;
+    margin-top: 23px;
 }
 
 .main-nav a {
-  color: #888;
-  text-decoration: none;
-  transition: color .2s ease;
+    text-decoration: none;
+    color: #777;
+    font-size: 12px;
+    letter-spacing: 2px;
+    transition: color 0.2s;
 }
 
 .main-nav a:hover,
 .main-nav a.active {
-  color: #477653;
+    color: #477653;
 }
-
-.main-nav span { color: #bbb; }
 
 /* CONTENT */
 #content-area {
-  width: 100%;
-  max-width: 1500px;
-  flex: 1;
-  margin: 0 auto;
-  padding: 0 3%;
-  min-height: 480px;
+    flex: 1;
+    width: 100%;
+    min-height: 480px;
 }
 
 .content-view {
-  display: none;
-  width: 100%;
+    display: none;
 }
 
-.content-view.active { display: block; }
+.content-view.active {
+    display: block;
+}
 
-/* PROJECT GRID */
+/* PROJECT */
+#projects {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 35px 45px 65px;
+}
+
 .project-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 22px;
+    row-gap: 35px;
 }
 
-.project {
-  position: relative;
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border: 0;
-  padding: 0;
-  background: #ddd;
-  cursor: pointer;
+.project-item {
+    cursor: pointer;
+    min-width: 0;
 }
 
-.project img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .5s ease;
+.project-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #f3f3f3;
 }
 
-.project::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,.30);
-  transition: background .35s ease;
+.project-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
-.project:hover img { transform: scale(1.06); }
-
-.project:hover::after {
-  background: rgba(0,0,0,.48);
+.project-item:hover .project-image img {
+    transform: scale(1.035);
 }
 
 .project-name {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  color: #fff;
-  text-align: center;
-  font-size: 17px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-shadow: 0 1px 5px rgba(0,0,0,.4);
+    margin-top: 11px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #555;
+    letter-spacing: 0.2px;
 }
 
 /* PAGINATION */
 .pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 22px;
-  margin: 40px auto 35px;
-  font-size: 13px;
-  color: #777;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 55px;
 }
 
 .pagination button {
-  border: none;
-  background: none;
-  color: #777;
-  font-family: inherit;
-  font-size: 13px;
-  cursor: pointer;
-  padding: 8px 5px;
+    border: none;
+    background: none;
+    color: #777;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    padding: 8px;
 }
 
-.pagination button:hover:not(:disabled) { color: #477653; }
+.pagination button:hover:not(:disabled) {
+    color: #477653;
+}
+
 .pagination button:disabled {
-  color: #ccc;
-  cursor: default;
+    color: #ccc;
+    cursor: default;
 }
 
-#pageInfo {
-  min-width: 50px;
-  text-align: center;
-  letter-spacing: 1px;
+.page-number {
+    font-size: 11px;
+    color: #777;
+    letter-spacing: 2px;
+}
+
+/* SOSO INTRODUCTION */
+#soso {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 55px 45px 90px;
+    border: none !important;
+}
+
+#soso * {
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+.soso-title {
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #477653;
+    margin-bottom: 35px;
+}
+
+.soso-intro {
+    font-size: 14px;
+    line-height: 2.1;
+    color: #555;
+    word-break: keep-all;
+    margin-bottom: 65px;
+}
+
+.soso-section {
+    margin-bottom: 65px;
+}
+
+.soso-section-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #477653;
+    letter-spacing: 1px;
+    margin-bottom: 22px;
+}
+
+.soso-text {
+    font-size: 13px;
+    line-height: 2.1;
+    color: #666;
+    word-break: keep-all;
+}
+
+.profile-name {
+    font-size: 21px;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.profile-position {
+    font-size: 11px;
+    color: #888;
+    letter-spacing: 1.5px;
+    margin-bottom: 25px;
+}
+
+.profile-description {
+    font-size: 13px;
+    line-height: 2.1;
+    color: #666;
+    word-break: keep-all;
+}
+
+.profile-table {
+    width: 100%;
+    margin-top: 25px;
+    border-collapse: collapse;
+}
+
+.profile-table td {
+    padding: 8px 0;
+    font-size: 12px;
+    line-height: 1.8;
+    vertical-align: top;
+    color: #666;
+}
+
+.profile-table td:first-child {
+    width: 125px;
+    color: #477653;
+    font-weight: 500;
 }
 
 /* LOCATION */
-.info-section {
-  max-width: 1100px;
-  min-height: 480px;
-  margin: 0 auto;
-  padding: 100px 30px;
-  text-align: center;
+#location {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 55px 45px 90px;
 }
 
-.info-section h2 {
-  margin-bottom: 35px;
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 3px;
-  color: #477653;
+.location-title {
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #477653;
+    margin-bottom: 40px;
 }
 
-.info-section p {
-  font-size: 14px;
-  line-height: 2;
-  color: #777;
+.location-address {
+    font-size: 14px;
+    color: #555;
+    line-height: 2;
+    margin-bottom: 30px;
 }
 
-.location-info {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  font-size: 14px;
-  line-height: 1.7;
-  color: #555;
+.location-contact {
+    font-size: 12px;
+    color: #777;
+    line-height: 2.2;
+    letter-spacing: 0.3px;
 }
 
-.location-info a {
-  color: #555;
-  text-decoration: none;
+.location-contact a {
+    color: inherit;
+    text-decoration: none;
 }
 
-.location-info a:hover { color: #477653; }
+.location-contact a:hover {
+    color: #477653;
+}
 
 /* FOOTER */
 footer {
-  width: 100%;
-  flex-shrink: 0;
-  padding: 14px 20px 8px;
-  text-align: center;
-  color: #222;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.2;
+    width: 100%;
+    padding: 28px 20px 25px;
+    text-align: center;
+    flex-shrink: 0;
+    background: #fff;
 }
 
-.footer-info {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 3px 14px;
-  color: #333;
-  font-size: 13px;
-  line-height: 1.5;
-  text-align: center;
+.footer-contact {
+    font-size: 11px;
+    line-height: 1.9;
+    color: #888;
+    letter-spacing: 0.2px;
 }
 
-.footer-info span { display: inline-block; }
-
-.footer-info a {
-  color: #222;
-  text-decoration: none;
+.footer-contact a {
+    color: inherit;
+    text-decoration: none;
 }
 
-.copyright {
-  width: 100%;
-  margin-top: 5px;
-  color: #444;
-  font-size: 11px;
-  line-height: 1.4;
-  text-align: center;
-}
-
-/* =================================
-   SOSO ABOUT PAGE
-================================= */
-
-#soso {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 3%;
-}
-
-/* INTRO */
-.soso-intro {
-  padding: 65px 0 55px;
-}
-
-.soso-eyebrow {
-  margin: 0 0 30px;
-  color: #777;
-  font-size: 11px;
-  letter-spacing: 3px;
-}
-
-.soso-intro h2 {
-  margin: 0;
-  font-size: clamp(38px, 5.5vw, 64px);
-  line-height: 1.35;
-  font-weight: 500;
-  letter-spacing: -3px;
-}
-
-.soso-intro-en {
-  margin: 22px 0 0;
-  color: #888;
-  font-size: 13px;
-  letter-spacing: 1.5px;
-}
-
-/* INTRO TEXT */
-.soso-intro-bottom {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 50px;
-  padding: 35px 0 75px;
-}
-
-.soso-intro-label {
-  color: #477653;
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-
-.soso-intro-bottom p {
-  max-width: 650px;
-  margin: 0;
-  color: #666;
-  font-size: 14px;
-  line-height: 2.1;
-  word-break: keep-all;
-}
-
-/* SECTION HEADING */
-.soso-section-heading {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  color: #888;
-}
-
-.soso-section-heading span {
-  color: #477653;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-.soso-section-heading p {
-  margin: 0;
-  font-size: 10px;
-  letter-spacing: 1.7px;
-  line-height: 1.6;
-}
-
-/* PHILOSOPHY */
-.soso-philosophy {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 50px;
-  padding: 85px 0;
-}
-
-.soso-philosophy-body h3 {
-  margin: 0 0 30px;
-  font-size: 32px;
-  line-height: 1.5;
-  font-weight: 500;
-  letter-spacing: -1.5px;
-}
-
-.soso-philosophy-body p {
-  max-width: 650px;
-  margin: 0 0 17px;
-  color: #666;
-  font-size: 14px;
-  line-height: 2.1;
-  word-break: keep-all;
-}
-
-/* PRINCIPAL */
-.soso-principal {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 50px;
-  padding: 85px 0;
-}
-
-.soso-principal-name {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: sticky;
-  top: 30px;
-  height: fit-content;
-}
-
-.soso-principal-name p {
-  margin: 0 0 15px;
-  color: #888;
-  font-size: 12px;
-}
-
-.soso-principal-name h3 {
-  margin: 0;
-  font-size: 48px;
-  font-weight: 500;
-  letter-spacing: -2px;
-}
-
-.soso-principal-name > span {
-  margin-top: 12px;
-  color: #888;
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-
-.soso-principal-name .soso-registered {
-  margin-top: 7px;
-  color: #477653;
-  font-size: 12px;
-  letter-spacing: .5px;
-}
-
-.soso-principal-text h4 {
-  margin: 0 0 30px;
-  font-size: 25px;
-  line-height: 1.6;
-  font-weight: 500;
-  letter-spacing: -1px;
-  word-break: keep-all;
-}
-
-.soso-principal-text p {
-  margin: 0 0 19px;
-  color: #666;
-  font-size: 13px;
-  line-height: 2.1;
-  word-break: keep-all;
-}
-
-.soso-principal-sign {
-  display: flex;
-  justify-content: flex-end;
-  align-items: baseline;
-  gap: 15px;
-  margin-top: 45px;
-  padding-top: 20px;
-  color: #777;
-  font-size: 12px;
-}
-
-.soso-principal-sign strong {
-  color: #292929;
-  font-size: 17px;
-  font-weight: 500;
-}
-
-/* RECORDS */
-.soso-records {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 65px;
-  padding: 85px 0;
-}
-
-.soso-record {
-  display: grid;
-  grid-template-columns: 1fr 1.7fr;
-  gap: 25px;
-}
-
-.soso-record-content h3,
-.soso-career-content h3 {
-  margin: 0 0 28px;
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: -.8px;
-}
-
-.soso-record-row {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 10px;
-  padding: 13px 0;
-}
-
-.soso-year {
-  color: #888;
-  font-size: 11px;
-  line-height: 1.8;
-  white-space: nowrap;
-}
-
-.soso-record-title {
-  color: #555;
-  font-size: 12px;
-  line-height: 1.8;
-  word-break: keep-all;
-}
-
-.soso-record-title small {
-  color: #888;
-  font-size: 11px;
-}
-
-/* CAREER */
-.soso-career {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 50px;
-  padding: 85px 0;
-}
-
-.soso-career-row {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 20px;
-  padding: 15px 0;
-}
-
-.soso-career-row span {
-  color: #888;
-  font-size: 12px;
-}
-
-.soso-career-row strong {
-  color: #555;
-  font-size: 13px;
-  font-weight: 400;
-}
-
-/* ENDING */
-.soso-ending {
-  padding: 70px 0 50px;
-  color: #477653;
-}
-
-.soso-ending p {
-  margin: 0;
-  font-size: 25px;
-  letter-spacing: 3px;
-  font-weight: 500;
-}
-
-.soso-ending span {
-  display: block;
-  margin-top: 13px;
-  color: #888;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-/* SOSO PAGE - REMOVE ALL HORIZONTAL LINES */
-#soso .soso-intro-bottom,
-#soso .soso-philosophy,
-#soso .soso-principal,
-#soso .soso-records,
-#soso .soso-record-row,
-#soso .soso-career,
-#soso .soso-career-row,
-#soso .soso-principal-sign {
-  border: none !important;
+.footer-copyright {
+    margin-top: 12px;
+    font-size: 9px;
+    color: #aaa;
+    letter-spacing: 0.5px;
 }
 
 /* PROJECT MODAL */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 100;
-  inset: 0;
-  background: rgba(0,0,0,.88);
-  padding: 30px 18px;
-  align-items: center;
-  justify-content: center;
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.88);
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
 }
 
-.modal.open { display: flex; }
+.modal.active {
+    display: flex;
+}
 
 .modal-content {
-  position: relative;
-  width: min(950px, 100%);
-  max-height: 90vh;
-  overflow-y: auto;
-  background: #fff;
-}
-
-.modal-image {
-  display: block;
-  width: 100%;
-  max-height: 65vh;
-  object-fit: contain;
-  background: #eee;
-}
-
-.modal-info { padding: 25px 30px 30px; }
-
-.modal-info h2 {
-  font-size: 21px;
-  font-weight: 500;
-  margin-bottom: 12px;
-}
-
-.modal-info p {
-  font-size: 14px;
-  color: #777;
-  line-height: 1.8;
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  z-index: 3;
-  width: 42px;
-  height: 42px;
-  border: 0;
-  background: rgba(0,0,0,.55);
-  color: #fff;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-/* TABLET */
-@media (max-width: 800px) {
-  header { height: 110px; }
-
-  #content-area { padding: 0 3%; }
-
-  .project-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-
-  .main-nav { margin-bottom: 30px; }
-}
-
-/* MOBILE */
-@media (max-width: 480px) {
-  header { height: 100px; }
-
-  .logo-korean { font-size: 32px; }
-  .logo-english { font-size: 13.2px; }
-
-  .main-nav {
-    font-size: 14px;
-    gap: 9px;
-    margin-bottom: 25px;
-  }
-
-  #content-area {
-    padding: 0 4%;
-    min-height: 420px;
-  }
-
-  .project-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .project-name { font-size: 13px; }
-
-  .pagination {
-    margin-top: 30px;
-    gap: 15px;
-  }
-
-  footer { padding: 12px 12px 8px; }
-
-  .footer-info {
-    justify-content: center;
+    width: 100%;
+    max-width: 1100px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 3px 10px;
-    font-size: 10px;
-  }
-
-  .copyright { margin-top: 5px; }
-
-  .info-section {
-    min-height: 420px;
-    padding: 70px 15px;
-  }
-
-  .modal-info { padding: 20px; }
 }
 
-/* SOSO RESPONSIVE */
-@media (max-width: 700px) {
-  #soso { padding: 0 4%; }
+.modal-content img {
+    max-width: 100%;
+    max-height: 78vh;
+    object-fit: contain;
+}
 
-  .soso-intro { padding: 45px 0 35px; }
+.modal-caption {
+    color: #fff;
+    font-size: 12px;
+    margin-top: 18px;
+    letter-spacing: 1px;
+    text-align: center;
+}
 
-  .soso-intro h2 {
-    font-size: 38px;
-    letter-spacing: -2px;
-  }
+.modal-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    border: none;
+    background: none;
+    color: #fff;
+    font-size: 32px;
+    font-weight: 200;
+    cursor: pointer;
+}
 
-  .soso-intro-en { margin-bottom: 0; }
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px 16px;
+    }
 
-  .soso-intro-bottom,
-  .soso-philosophy,
-  .soso-principal,
-  .soso-career {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
+    #projects {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
 
-  .soso-intro-bottom { padding: 28px 0 45px; }
+@media (max-width: 600px) {
+    header {
+        height: 115px;
+    }
 
-  .soso-philosophy,
-  .soso-principal,
-  .soso-career {
-    padding: 55px 0;
-  }
+    .logo-korean {
+        font-size: 22px;
+    }
 
-  .soso-philosophy-body h3 { font-size: 27px; }
+    .logo-english {
+        font-size: 11px;
+    }
 
-  .soso-principal-name { position: static; }
+    .main-nav {
+        gap: 30px;
+        margin-top: 20px;
+    }
 
-  .soso-principal-name h3 { font-size: 40px; }
+    .main-nav a {
+        font-size: 11px;
+    }
 
-  .soso-principal-text h4 { font-size: 22px; }
+    #projects {
+        padding: 25px 16px 50px;
+    }
 
-  .soso-records {
-    grid-template-columns: 1fr;
-    gap: 55px;
-    padding: 55px 0;
-  }
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 12px;
+        row-gap: 25px;
+    }
 
-  .soso-record {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
+    .project-name {
+        font-size: 11px;
+        margin-top: 8px;
+    }
 
-  .soso-record-content h3,
-  .soso-career-content h3 { font-size: 21px; }
+    #soso,
+    #location {
+        padding: 40px 22px 65px;
+    }
 
-  .soso-record-row { grid-template-columns: 90px 1fr; }
+    .soso-title,
+    .location-title {
+        font-size: 22px;
+    }
 
-  .soso-career-row {
-    grid-template-columns: 115px 1fr;
-    gap: 12px;
-  }
+    .soso-intro,
+    .soso-text,
+    .profile-description {
+        font-size: 12px;
+    }
 
-  .soso-career-row span,
-  .soso-career-row strong { font-size: 11px; }
+    .profile-table td {
+        font-size: 11px;
+    }
 
-  .soso-ending { padding-top: 50px; }
-  .soso-ending p { font-size: 21px; }
+    .profile-table td:first-child {
+        width: 95px;
+    }
+
+    footer {
+        padding: 22px 12px;
+    }
+
+    .footer-contact {
+        font-size: 10px;
+    }
+
+    .pagination {
+        margin-top: 40px;
+    }
+
+    .modal {
+        padding: 15px;
+    }
+
+    .modal-close {
+        top: 12px;
+        right: 18px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
-  <div class="logo">
-    <div class="logo-korean">소소 건축사사무소</div>
-    <div class="logo-english">ARCHITECTS</div>
-  </div>
+    <a href="#" class="logo" data-view="projects">
+        <div class="logo-korean">소소 건축사사무소</div>
+        <div class="logo-english">ARCHITECTS</div>
+    </a>
+
+    <nav class="main-nav">
+        <a href="#projects" data-view="projects" class="active">PROJECT</a>
+        <a href="#soso" data-view="soso">SOSO</a>
+        <a href="#location" data-view="location">LOCATION</a>
+    </nav>
 </header>
 
-<!-- NAVIGATION -->
-<nav class="main-nav">
-  <a href="#projects" class="active" data-view="projects">PROJECT</a>
-  <span>|</span>
-  <a href="#soso" data-view="soso">SOSO</a>
-  <span>|</span>
-  <a href="#location" data-view="location">LOCATION</a>
-</nav>
+<main id="content-area">
 
-<!-- CONTENT -->
-<div id="content-area">
+    <!-- PROJECT -->
+    <section id="projects" class="content-view active">
+        <div class="project-grid" id="projectGrid"></div>
 
-  <!-- PROJECT PAGE -->
-  <main id="projects" class="content-view active">
-    <section class="project-grid">
+        <div class="pagination">
+            <button id="prevBtn" type="button">PREV</button>
+            <span class="page-number" id="pageNumber">01 / 02</span>
+            <button id="nextBtn" type="button">NEXT</button>
+        </div>
+    </section>
 
-      <button class="project"
-        data-title="프로젝트 01"
-        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-        data-image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=90">
-        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="프로젝트 01">
-        <span class="project-name">프로젝트 01</span>
-      </button>
+    <!-- SOSO -->
+    <section id="soso" class="content-view">
 
-      <button class="project"
-        data-title="프로젝트 02"
-        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-        data-image="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=90">
-        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85" alt="프로젝트 02">
-        <span class="project-name">프로젝트 02</span>
-      </button>
+        <h1 class="soso-title">SOSO ARCHITECTS</h1>
 
-      <button class="project"
-        data-title="프로젝트 03"
-        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-        data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90">
-        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="프로젝트 03">
-        <span class="project-name">프로젝트 03</span>
-      </button>
+        <div class="soso-intro">
+            소소 건축사사무소는 일상 속 작은 가치에서 건축의 가능성을 찾습니다.
+            건축은 단순히 공간을 만드는 일이 아니라, 사람과 도시,
+            그리고 그 안에서 이루어지는 삶을 담아내는 과정이라고 생각합니다.
+            <br><br>
+            우리는 주변의 환경과 장소가 가진 고유한 특성을 존중하며,
+            사용자의 삶에 자연스럽게 스며드는 공간을 고민합니다.
+            작은 것의 가치를 발견하고, 그 가치를 건축으로 실현하는 것.
+            그것이 소소 건축사사무소가 추구하는 설계의 방향입니다.
+        </div>
 
-      <button class="project"
-        data-title="프로젝트 04"
-        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-        data-image="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90">
-        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85" alt="프로젝트 04">
-        <span class="project-name">프로젝트 04</span>
-      </button>
+        <div class="soso-section">
+            <h2 class="soso-section-title">DESIGN PHILOSOPHY</h2>
+            <div class="soso-text">
+                건축은 공간을 넘어 사람과 도시를 생각하는 일입니다.
+                <br>
+                장소가 가진 맥락과 주변 환경을 읽고, 그 안에서 필요한
+                공공성과 지속가능성을 고민합니다.
+                <br><br>
+                자연과 조화를 이루는 패시브 디자인, 재료의 물성과 구축 방식,
+                목구조와 시공의 합리성, 그리고 건축물의 유지관리까지
+                설계의 모든 과정에서 함께 생각합니다.
+                <br><br>
+                소소는 좋은 건축이 거창한 형태에서 시작되는 것이 아니라,
+                일상에 대한 세심한 관찰과 작은 배려에서 시작된다고 믿습니다.
+            </div>
+        </div>
 
-      <button class="project"
-        data-title="프로젝트 05"
-        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-        data-image="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1600&q=90">
-        <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=900&q=85" alt="프로젝트 05">
-        <span class="project-name">프로젝트 05</span>
-      </button>
+        <div class="soso-section">
+            <h2 class="soso-section-title">PRINCIPAL</h2>
 
-      <button class="project"
-        data-title="프로젝트 06"
-        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-        data-image="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=90">
-        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85" alt="프로젝트 06">
-        <span class="project-name">프로젝트 06</span>
-      </button>
+            <div class="profile-name">마순석</div>
+            <div class="profile-position">MA SOON SEOK | Registered Architect</div>
 
-      <button class="project"
-        data-title="프로젝트 07"
-        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-        data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90">
-        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="프로젝트 07">
-        <span class="project-name">프로젝트 07</span>
-      </button>
+            <div class="profile-description">
+                건축공학을 전공하고 건축전문대학원에서 건축디자인을 공부하였다.
+                졸업 후 국내 건축사사무소에서 공공건축물을 중심으로
+                현상설계 및 실시설계 업무를 수행하였다.
+                <br><br>
+                관공서, 도서관, 학교, 병원, 복지관, 방송국, 전시관 등
+                다양한 공공건축물의 설계 경험을 바탕으로
+                도시재개발 및 리모델링 프로젝트를 수행하였으며,
+                제주도 주택과 오피스텔, 근린생활시설 등
+                다양한 규모와 용도의 건축물을 경험하였다.
+                <br><br>
+                2022년 소소 건축사사무소를 개소하여 건축설계,
+                공사감리, 해체감리, 용도변경 등 건축 관련 업무를 수행하고 있다.
+                현재 구로구 건축위원회 위원으로 활동하고 있다.
+            </div>
+        </div>
 
-      <button class="project"
-        data-title="프로젝트 08"
-        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-        data-image="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1600&q=90">
-        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=900&q=85" alt="프로젝트 08">
-        <span class="project-name">프로젝트 08</span>
-      </button>
+        <div class="soso-section">
+            <h2 class="soso-section-title">EDUCATION & LICENSE</h2>
 
-      <button class="project"
-        data-title="프로젝트 09"
-        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-        data-image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=90">
-        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="프로젝트 09">
-        <span class="project-name">프로젝트 09</span>
-      </button>
+            <table class="profile-table">
+                <tr>
+                    <td>2022</td>
+                    <td>건축사 (KIRA)</td>
+                </tr>
+                <tr>
+                    <td>2013</td>
+                    <td>건축기사</td>
+                </tr>
+                <tr>
+                    <td>2007</td>
+                    <td>한양대학교 건축전문대학원 건축디자인 석사</td>
+                </tr>
+            </table>
+        </div>
 
-      <button class="project"
-        data-title="프로젝트 10"
-        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-        data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90">
-        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="프로젝트 10">
-        <span class="project-name">프로젝트 10</span>
-      </button>
+        <div class="soso-section">
+            <h2 class="soso-section-title">ACTIVITIES</h2>
 
-      <button class="project"
-        data-title="프로젝트 11"
-        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-        data-image="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90">
-        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85" alt="프로젝트 11">
-        <span class="project-name">프로젝트 11</span>
-      </button>
+            <table class="profile-table">
+                <tr>
+                    <td>2023.03 ~</td>
+                    <td>구로구 건축위원회 위원</td>
+                </tr>
+                <tr>
+                    <td>2023.05 ~</td>
+                    <td>한국산업인력공단 국가기술자격시험 건축분야 시험(채점)위원</td>
+                </tr>
+                <tr>
+                    <td>2022.03 ~</td>
+                    <td>그린리모델링 건축사</td>
+                </tr>
+                <tr>
+                    <td>2022.01 ~</td>
+                    <td>구로구·서울시 건축사회 및 대한건축사협회 정회원</td>
+                </tr>
+            </table>
+        </div>
 
-      <button class="project"
-        data-title="프로젝트 12"
-        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-        data-image="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=90">
-        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85" alt="프로젝트 12">
-        <span class="project-name">프로젝트 12</span>
-      </button>
+        <div class="soso-section">
+            <h2 class="soso-section-title">CAREER</h2>
 
-      <!-- 새 프로젝트는 이 위치에 기존 project 버튼을 복사하여 추가 -->
+            <table class="profile-table">
+                <tr>
+                    <td>2022.01 ~ 현재</td>
+                    <td>소소 건축사사무소</td>
+                </tr>
+                <tr>
+                    <td>2019</td>
+                    <td>(주)반</td>
+                </tr>
+                <tr>
+                    <td>2014</td>
+                    <td>(주)건축사사무소 에스파스</td>
+                </tr>
+                <tr>
+                    <td>2012</td>
+                    <td>(주)머릿돌에이스</td>
+                </tr>
+                <tr>
+                    <td>2007</td>
+                    <td>(주)엄앤드이</td>
+                </tr>
+                <tr>
+                    <td>2006</td>
+                    <td>(주)건원</td>
+                </tr>
+                <tr>
+                    <td>2004</td>
+                    <td>(주)아키플랜</td>
+                </tr>
+            </table>
+        </div>
 
     </section>
 
-    <div class="pagination">
-      <button id="prevPage" type="button">PREV</button>
-      <span id="pageInfo">1 / 1</span>
-      <button id="nextPage" type="button">NEXT</button>
-    </div>
-  </main>
+    <!-- LOCATION -->
+    <section id="location" class="content-view">
 
-  <!-- SOSO ABOUT PAGE -->
-  <section class="content-view" id="soso">
+        <h1 class="location-title">LOCATION</h1>
 
-    <!-- INTRO -->
-    <div class="soso-intro">
-      <p class="soso-eyebrow">ABOUT SOSO ARCHITECTS</p>
-
-      <h2>
-        작은것의 가치,<br>
-        건축으로 이야기합니다.
-      </h2>
-
-      <p class="soso-intro-en">
-        Architecture begins with the value of small things.
-      </p>
-    </div>
-
-    <!-- INTRODUCTION -->
-    <div class="soso-intro-bottom">
-      <div class="soso-intro-label">SOSO ARCHITECTS</div>
-
-      <p>
-        소소 건축사사무소는 일상 속 작은 가치에서 건축의 가능성을 찾습니다.
-        사람과 장소, 환경의 관계를 세심하게 살피며
-        그 안에 담긴 고유한 이야기를 공간으로 구현합니다.
-        <br><br>
-        공공건축에서 소규모 건축물에 이르기까지,
-        건축의 규모와 용도에 관계없이 본질에 집중하고
-        현실적인 가능성 안에서 더 나은 공간을 제안합니다.
-      </p>
-    </div>
-
-    <!-- PHILOSOPHY -->
-    <div class="soso-philosophy">
-      <div class="soso-section-heading">
-        <span>01</span>
-        <p>DESIGN PHILOSOPHY</p>
-      </div>
-
-      <div class="soso-philosophy-body">
-        <h3>
-          공간을 넘어,<br>
-          사람과 도시를 생각합니다.
-        </h3>
-
-        <p>
-          건축은 도시와 지역사회를 구성하는 중요한 요소이며,
-          그 안에서 사람들의 일상과 관계를 만들어 갑니다.
-          우리는 건축물이 도시와 지역사회 안에서
-          어떠한 공공적 역할을 할 수 있는지 고민합니다.
-        </p>
-
-        <p>
-          지속가능한 건축환경을 위한 패시브 디자인,
-          재료와 목구조, 시공방법과 유지관리까지.
-          사람이 건강하게 생활할 수 있는 공간을 구현하기 위해
-          꾸준히 연구하고 실천합니다.
-        </p>
-      </div>
-    </div>
-
-    <!-- PRINCIPAL -->
-    <div class="soso-principal">
-      <div class="soso-section-heading">
-        <span>02</span>
-        <p>PRINCIPAL</p>
-      </div>
-
-      <div class="soso-principal-body">
-
-        <div class="soso-principal-name">
-          <p>대표 건축사</p>
-          <h3>마순석</h3>
-          <span>MA SOON SEOK</span>
-          <span class="soso-registered">Registered Architect</span>
+        <div class="location-address">
+            서울시 구로구 디지털로27가길 17, 303호
         </div>
 
-        <div class="soso-principal-text">
-          <h4>
-            건축을 통해 의미 있는 작업과<br>
-            지역사회에 가치 있는 역할을 합니다.
-          </h4>
-
-          <p>
-            건축공학을 전공하고 한양대학교 건축전문대학원에서
-            건축디자인을 공부하였습니다.
-            졸업 후 국내 건축사사무소에서 공공건축물을 중심으로
-            현상설계와 실시설계를 두루 경험하며 실무 역량을 쌓았습니다.
-          </p>
-
-          <p>
-            관공서, 도서관, 학교, 병원, 복지관, 방송국, 전시관 등
-            다양한 공공건축 프로젝트의 현상설계 당선과
-            실시설계 업무를 수행하였으며,
-            도시재개발 프로젝트와 리모델링(대수선) 비상주 감리 등
-            폭넓은 분야의 실무를 경험하였습니다.
-            이와 함께 제주도 주택, 오피스텔, 근린생활시설 등
-            다양한 소규모 건축 프로젝트에도 참여하였습니다.
-          </p>
-
-          <p>
-            주요 관심사는 도시에서 공공성과 건축물의 관계,
-            그리고 건축이 지역사회 안에서 수행하는 역할입니다.
-            현실적인 가능성을 바탕으로 참신한 아이디어를 모색하며,
-            지속가능한 건축환경과 건강한 생활공간을 위한
-            다양한 연구를 이어가고 있습니다.
-          </p>
-
-          <p>
-            건축사로서 의미 있는 작업과 지역사회에 가치 있는 역할을 하고자
-            2022년 소소 건축사사무소를 개소하였습니다.
-            개소 이후 건축설계뿐 아니라 공사감리, 해체감리, 용도변경 등
-            일상과 밀접한 소규모 건축물의 다양한 업무에 참여하며
-            실제 현장과 설계 사이의 간극을 좁히기 위해 노력하고 있습니다.
-          </p>
-
-          <p>
-            현재 구로구 건축위원회 위원으로 활동하며,
-            건축의 공공성과 사회적 책임에 대해서도
-            지속적으로 고민하고 있습니다.
-          </p>
-
-          <div class="soso-principal-sign">
-            <span>소소 건축사사무소</span>
-            <strong>마순석</strong>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- EDUCATION & ASSOCIATION -->
-    <div class="soso-records">
-
-      <!-- EDUCATION -->
-      <div class="soso-record">
-        <div class="soso-section-heading">
-          <span>03</span>
-          <p>EDUCATION & QUALIFICATION</p>
+        <div class="location-contact">
+            T. <a href="tel:0269537173">02-6953-7173</a><br>
+            F. 02-6953-7174<br>
+            E. <a href="mailto:sosotelling@naver.com">sosotelling@naver.com</a>
         </div>
 
-        <div class="soso-record-content">
-          <h3>교육 및 자격</h3>
+    </section>
 
-          <div class="soso-record-row">
-            <span class="soso-year">2022</span>
-            <span class="soso-record-title">건축사(KIRA)</span>
-          </div>
+</main>
 
-          <div class="soso-record-row">
-            <span class="soso-year">2013</span>
-            <span class="soso-record-title">건축기사</span>
-          </div>
-
-          <div class="soso-record-row">
-            <span class="soso-year">2007</span>
-            <span class="soso-record-title">
-              한양대학교 건축전문대학원 건축 석사<br>
-              <small>Master of Architecture</small>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ASSOCIATION -->
-      <div class="soso-record">
-        <div class="soso-section-heading">
-          <span>04</span>
-          <p>ASSOCIATION & ACTIVITY</p>
-        </div>
-
-        <div class="soso-record-content">
-          <h3>협회 및 활동</h3>
-
-          <div class="soso-record-row">
-            <span class="soso-year">2023.03~</span>
-            <span class="soso-record-title">
-              구로구 건축위원회 위원 위촉
-            </span>
-          </div>
-
-          <div class="soso-record-row">
-            <span class="soso-year">2023.05~</span>
-            <span class="soso-record-title">
-              한국산업인력공단 국가기술자격시험<br>
-              건축분야 시험(채점)위원 위촉
-            </span>
-          </div>
-
-          <div class="soso-record-row">
-            <span class="soso-year">2022.03~</span>
-            <span class="soso-record-title">그린리모델링 건축사</span>
-          </div>
-
-          <div class="soso-record-row">
-            <span class="soso-year">2022.01~</span>
-            <span class="soso-record-title">구로구 건축사회 정회원</span>
-          </div>
-
-          <div class="soso-record-row">
-            <span class="soso-year">2022.01~</span>
-            <span class="soso-record-title">서울시 건축사회 정회원</span>
-          </div>
-
-          <div class="soso-record-row">
-            <span class="soso-year">2022.01~</span>
-            <span class="soso-record-title">대한건축사협회 정회원</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CAREER -->
-    <div class="soso-career">
-      <div class="soso-section-heading">
-        <span>05</span>
-        <p>CAREER</p>
-      </div>
-
-      <div class="soso-career-content">
-        <h3>경력</h3>
-
-        <div class="soso-career-row">
-          <span>2022.01~현재</span>
-          <strong>소소 건축사사무소</strong>
-        </div>
-
-        <div class="soso-career-row">
-          <span>2019</span>
-          <strong>(주)반 건축사사무소</strong>
-        </div>
-
-        <div class="soso-career-row">
-          <span>2014</span>
-          <strong>(주)건축사사무소 에스파스</strong>
-        </div>
-
-        <div class="soso-career-row">
-          <span>2012</span>
-          <strong>(주)머릿돌에이스 건축사사무소</strong>
-        </div>
-
-        <div class="soso-career-row">
-          <span>2007</span>
-          <strong>(주)엄앤드이 종합건축사사무소</strong>
-        </div>
-
-        <div class="soso-career-row">
-          <span>2006</span>
-          <strong>(주)건원 종합건축사사무소</strong>
-        </div>
-
-        <div class="soso-career-row">
-          <span>2004</span>
-          <strong>(주)아키플랜 종합건축사사무소</strong>
-        </div>
-      </div>
-    </div>
-
-    <!-- ENDING -->
-    <div class="soso-ending">
-      <p>SOSO ARCHITECTS</p>
-      <span>작은것의 가치를 추구합니다.</span>
-    </div>
-
-  </section>
-
-  <!-- LOCATION PAGE -->
-  <section id="location" class="content-view">
-    <div class="info-section">
-      <h2>LOCATION</h2>
-
-      <div class="location-info">
-        <p>소소 건축사사무소</p>
-        <p>서울시 구로구 디지털로27가길 17, 303호</p>
-        <p>
-          T: <a href="tel:0269537173">02-6953-7173</a>
-        </p>
-        <p>F: 02-6953-7174</p>
-        <p>
-          E: <a href="mailto:sosotelling@naver.com">
-          sosotelling@naver.com</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-</div>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-info">
-    <span>서울시 구로구 디지털로27가길 17, 303호</span>
-    <span>T: <a href="tel:0269537173">02-6953-7173</a></span>
-    <span>F: 02-6953-7174</span>
-    <span>E: <a href="mailto:sosotelling@naver.com">sosotelling@naver.com</a></span>
-  </div>
+    <div class="footer-contact">
+        서울시 구로구 디지털로27가길 17, 303호<br>
+        T. 02-6953-7173 &nbsp; | &nbsp; F. 02-6953-7174<br>
+        E. sosotelling@naver.com
+    </div>
 
-  <div class="copyright">
-    © 2026 SOSO ARCHITECTS. All Rights Reserved.
-  </div>
+    <div class="footer-copyright">
+        © 2026 SOSO ARCHITECTS. All Rights Reserved.
+    </div>
 </footer>
 
-<!-- PROJECT MODAL -->
-<div class="modal" id="projectModal"
-     role="dialog" aria-modal="true"
-     aria-labelledby="modalTitle">
-
-  <div class="modal-content">
-    <button class="close" id="closeModal"
-            aria-label="닫기">&times;</button>
-
-    <img class="modal-image" id="modalImage" src="" alt="">
-
-    <div class="modal-info">
-      <h2 id="modalTitle"></h2>
-      <p id="modalDescription"></p>
+<!-- PROJECT IMAGE MODAL -->
+<div class="modal" id="projectModal">
+    <button class="modal-close" id="modalClose" type="button">&times;</button>
+    <div class="modal-content">
+        <img id="modalImage" src="" alt="Project image">
+        <div class="modal-caption" id="modalCaption"></div>
     </div>
-  </div>
 </div>
 
 <script>
+/* PROJECT DATA
+   실제 프로젝트 이미지와 프로젝트명에 맞게 아래 항목을 교체하면 됩니다.
+*/
+const projects = [
+    {
+        name: "Public Architecture Project 01",
+        image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1200"
+    },
+    {
+        name: "Public Architecture Project 02",
+        image: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=1200"
+    },
+    {
+        name: "Residential Architecture 01",
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200"
+    },
+    {
+        name: "Residential Architecture 02",
+        image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200"
+    },
+    {
+        name: "Community Center",
+        image: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=1200"
+    },
+    {
+        name: "Cultural Architecture",
+        image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200"
+    },
+    {
+        name: "Office Building",
+        image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200"
+    },
+    {
+        name: "Renovation Project",
+        image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200"
+    },
+    {
+        name: "Housing Project",
+        image: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200"
+    },
+    {
+        name: "Neighborhood Facility",
+        image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200"
+    },
+    {
+        name: "Interior Architecture",
+        image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200"
+    },
+    {
+        name: "Urban Architecture",
+        image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1200"
+    },
+    {
+        name: "Architecture Project 13",
+        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200"
+    },
+    {
+        name: "Architecture Project 14",
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200"
+    },
+    {
+        name: "Architecture Project 15",
+        image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200"
+    },
+    {
+        name: "Architecture Project 16",
+        image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200"
+    },
+    {
+        name: "Architecture Project 17",
+        image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200"
+    },
+    {
+        name: "Architecture Project 18",
+        image: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200"
+    }
+];
 
-/* CONTENT NAVIGATION */
+const itemsPerPage = 12;
+let currentPage = 1;
+
+const projectGrid = document.getElementById("projectGrid");
+const pageNumber = document.getElementById("pageNumber");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+const totalPages = Math.ceil(projects.length / itemsPerPage);
+
+/* PROJECT RENDER */
+function showPage(page) {
+    currentPage = page;
+
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const pageProjects = projects.slice(start, end);
+
+    projectGrid.innerHTML = "";
+
+    pageProjects.forEach((project, index) => {
+        const item = document.createElement("div");
+        item.className = "project-item";
+
+        item.innerHTML = `
+            <div class="project-image">
+                <img src="${project.image}" alt="${project.name}" loading="lazy">
+            </div>
+            <div class="project-name">${project.name}</div>
+        `;
+
+        item.addEventListener("click", () => {
+            openModal(project);
+        });
+
+        projectGrid.appendChild(item);
+    });
+
+    pageNumber.textContent =
+        String(currentPage).padStart(2, "0") +
+        " / " +
+        String(totalPages).padStart(2, "0");
+
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === totalPages;
+}
+
+/* PAGINATION */
+prevBtn.addEventListener("click", () => {
+    if (currentPage > 1) {
+        showPage(currentPage - 1);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+});
+
+nextBtn.addEventListener("click", () => {
+    if (currentPage < totalPages) {
+        showPage(currentPage + 1);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+});
+
+/* NAVIGATION
+   메뉴를 클릭해도 스크롤을 강제로 이동시키지 않습니다.
+   따라서 상단 회사명과 메뉴의 화면상 위치가 유지됩니다.
+*/
 const navLinks = document.querySelectorAll(".main-nav a");
+const logoLink = document.querySelector(".logo");
 const contentViews = document.querySelectorAll(".content-view");
 
-navLinks.forEach(link => {
-  link.addEventListener("click", event => {
-    event.preventDefault();
-
-    const targetId = link.dataset.view;
+function changeView(targetId, clickedLink) {
     const targetView = document.getElementById(targetId);
 
     if (!targetView) return;
 
     contentViews.forEach(view => {
-      view.classList.remove("active");
+        view.classList.remove("active");
     });
 
-    navLinks.forEach(nav => {
-      nav.classList.remove("active");
+    navLinks.forEach(link => {
+        link.classList.remove("active");
     });
 
     targetView.classList.add("active");
-    link.classList.add("active");
+
+    if (clickedLink && clickedLink.classList.contains("main-nav-link")) {
+        clickedLink.classList.add("active");
+    } else {
+        const matchingLink = document.querySelector(
+            `.main-nav a[data-view="${targetId}"]`
+        );
+
+        if (matchingLink) matchingLink.classList.add("active");
+    }
 
     if (targetId === "projects") {
-      showPage(1);
+        showPage(1);
     }
 
     closeModal();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-});
 
-/* PROJECT PAGINATION */
-const projects = Array.from(document.querySelectorAll(".project"));
-const pageSize = 12;
-let currentPage = 1;
-
-const prevButton = document.getElementById("prevPage");
-const nextButton = document.getElementById("nextPage");
-const pageInfo = document.getElementById("pageInfo");
-
-function showPage(page) {
-  const totalPages = Math.max(1, Math.ceil(projects.length / pageSize));
-
-  currentPage = Math.max(1, Math.min(page, totalPages));
-
-  projects.forEach((project, index) => {
-    const startIndex = (currentPage - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-
-    project.style.display =
-      index >= startIndex && index < endIndex ? "block" : "none";
-  });
-
-  pageInfo.textContent = currentPage + " / " + totalPages;
-
-  prevButton.disabled = currentPage === 1;
-  nextButton.disabled = currentPage === totalPages;
+    /* 중요: 메뉴 클릭 시 window.scrollTo()를 실행하지 않음 */
 }
 
-prevButton.addEventListener("click", () => {
-  if (currentPage > 1) {
-    showPage(currentPage - 1);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+navLinks.forEach(link => {
+    link.classList.add("main-nav-link");
+
+    link.addEventListener("click", event => {
+        event.preventDefault();
+        changeView(link.dataset.view, link);
+    });
 });
 
-nextButton.addEventListener("click", () => {
-  const totalPages = Math.ceil(projects.length / pageSize);
-
-  if (currentPage < totalPages) {
-    showPage(currentPage + 1);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+logoLink.addEventListener("click", event => {
+    event.preventDefault();
+    changeView("projects", null);
 });
 
-showPage(1);
-
-/* PROJECT MODAL */
+/* MODAL */
 const modal = document.getElementById("projectModal");
 const modalImage = document.getElementById("modalImage");
-const modalTitle = document.getElementById("modalTitle");
-const modalDescription = document.getElementById("modalDescription");
+const modalCaption = document.getElementById("modalCaption");
+const modalClose = document.getElementById("modalClose");
 
-projects.forEach(project => {
-  project.addEventListener("click", () => {
-    modalTitle.textContent = project.dataset.title;
-    modalDescription.textContent = project.dataset.description;
-    modalImage.src = project.dataset.image;
-    modalImage.alt = project.dataset.title;
-
-    modal.classList.add("open");
-    document.body.style.overflow = "hidden";
-    document.getElementById("closeModal").focus();
-  });
-});
-
-function closeModal() {
-  modal.classList.remove("open");
-  document.body.style.overflow = "";
+function openModal(project) {
+    modalImage.src = project.image;
+    modalCaption.textContent = project.name;
+    modal.classList.add("active");
 }
 
-document.getElementById("closeModal")
-  .addEventListener("click", closeModal);
+function closeModal() {
+    modal.classList.remove("active");
+    modalImage.src = "";
+}
+
+modalClose.addEventListener("click", closeModal);
 
 modal.addEventListener("click", event => {
-  if (event.target === modal) {
-    closeModal();
-  }
+    if (event.target === modal) {
+        closeModal();
+    }
 });
 
 document.addEventListener("keydown", event => {
-  if (event.key === "Escape") {
-    closeModal();
-  }
+    if (event.key === "Escape") {
+        closeModal();
+    }
 });
+
+/* INITIALIZE */
+showPage(1);
 
 </script>
 
