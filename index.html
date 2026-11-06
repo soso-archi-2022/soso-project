@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>소소 건축사사무소 | SOSO ARCHITECTS</title>
 <meta name="description" content="소소 건축사사무소 - 작은것의 가치를 추구합니다.">
 
@@ -21,7 +20,6 @@ body {
   color: #222;
 }
 
-/* 상단 사무소 로고 */
 header {
   height: 125px;
   display: flex;
@@ -40,10 +38,6 @@ header {
   font-weight: 600;
   letter-spacing: -1.2px;
   line-height: 1.4;
-  color: #333;
-}
-
-.logo-korean span {
   color: #477653;
 }
 
@@ -56,7 +50,6 @@ header {
   color: #777;
 }
 
-/* 프로젝트 영역 */
 main {
   max-width: 1500px;
   margin: 25px auto 90px;
@@ -71,7 +64,6 @@ main {
   margin-bottom: 48px;
 }
 
-/* 프로젝트 썸네일 */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -129,15 +121,42 @@ main {
   text-shadow: 0 1px 5px rgba(0,0,0,.4);
 }
 
-/* 하단 */
+/* 하단 연락처 */
 footer {
-  padding: 35px 15px;
-  border-top: 1px solid #eee;
+  padding: 38px 20px 30px;
+  border-top: 1px solid #ddd;
   text-align: center;
-  color: #999;
-  font-size: 11px;
-  letter-spacing: 1px;
+  color: #222;
+  font-size: 13px;
+  font-weight: 500;
   line-height: 2;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0 14px;
+  white-space: nowrap;
+  overflow-x: auto;
+  color: #333;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.footer-info a {
+  color: #222;
+  text-decoration: none;
+}
+
+.copyright {
+  margin-top: 18px;
+  padding-top: 13px;
+  border-top: 1px solid #eee;
+  color: #444;
+  font-size: 11px;
+  line-height: 1.8;
 }
 
 /* 프로젝트 상세 팝업 */
@@ -222,7 +241,7 @@ footer {
   }
 }
 
-/* 모바일 */
+/* 스마트폰 */
 @media (max-width: 480px) {
   header {
     height: 100px;
@@ -249,6 +268,16 @@ footer {
     font-size: 23px;
   }
 
+  footer {
+    padding: 30px 12px 25px;
+  }
+
+  .footer-info {
+    justify-content: flex-start;
+    gap: 0 10px;
+    font-size: 10px;
+  }
+
   .modal-info {
     padding: 20px;
   }
@@ -258,17 +287,13 @@ footer {
 
 <body>
 
-<!-- 상단 사무소명 -->
 <header>
   <div class="logo">
-    <div class="logo-korean">
-      <span>소소</span> 건축사사무소
-    </div>
+    <div class="logo-korean">소소 건축사사무소</div>
     <small>SOSO ARCHITECTS</small>
   </div>
 </header>
 
-<!-- 프로젝트 -->
 <main>
   <h1 class="section-title">PROJECTS</h1>
 
@@ -346,16 +371,46 @@ footer {
       <span class="project-name">프로젝트 09</span>
     </button>
 
+    <button class="project"
+      data-title="프로젝트 10"
+      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+      data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90">
+      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="프로젝트 10">
+      <span class="project-name">프로젝트 10</span>
+    </button>
+
+    <button class="project"
+      data-title="프로젝트 11"
+      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+      data-image="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90">
+      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85" alt="프로젝트 11">
+      <span class="project-name">프로젝트 11</span>
+    </button>
+
+    <button class="project"
+      data-title="프로젝트 12"
+      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+      data-image="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=90">
+      <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85" alt="프로젝트 12">
+      <span class="project-name">프로젝트 12</span>
+    </button>
+
   </section>
 </main>
 
-<!-- 하단 문구 -->
 <footer>
-  SOSO ARCHITECTS · 소소 건축사사무소<br>
-  작은것의 가치를 추구합니다.
+  <div class="footer-info">
+    <span>T <a href="tel:0269537173">02-6953-7173</a></span>
+    <span>F 02-6953-7174</span>
+    <span>E <a href="mailto:sosotelling@naver.com">sosotelling@naver.com</a></span>
+    <span>주소 입력 필요</span>
+  </div>
+
+  <div class="copyright">
+    © 2026 SOSO ARCHITECTS. All Rights Reserved.<br>
+  </div>
 </footer>
 
-<!-- 이미지 확대 팝업 -->
 <div class="modal" id="projectModal"
      role="dialog" aria-modal="true"
      aria-labelledby="modalTitle">
