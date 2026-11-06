@@ -19,6 +19,9 @@ html {
 }
 
 body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   font-family: Arial, "Noto Sans KR", sans-serif;
   background: #fff;
   color: #222;
@@ -27,6 +30,7 @@ body {
 /* 상단 로고 */
 header {
   height: 125px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,7 +67,8 @@ header {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  margin: 0 auto 48px;
+  flex-shrink: 0;
+  margin: 0 auto 35px;
   text-align: center;
   line-height: 1.2;
   font-size: 17px;
@@ -78,7 +83,8 @@ header {
   transition: color .2s ease;
 }
 
-.main-nav a:hover {
+.main-nav a:hover,
+.main-nav a.active {
   color: #477653;
 }
 
@@ -86,13 +92,26 @@ header {
   color: #bbb;
 }
 
-/* 메인 프로젝트 */
-main {
+/* 가운데 콘텐츠 영역 */
+#content-area {
+  width: 100%;
   max-width: 1500px;
-  margin: 25px auto 90px;
+  flex: 1;
+  margin: 0 auto;
   padding: 0 3%;
+  min-height: 480px;
 }
 
+.content-view {
+  display: none;
+  width: 100%;
+}
+
+.content-view.active {
+  display: block;
+}
+
+/* 프로젝트 썸네일 */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -150,13 +169,13 @@ main {
   text-shadow: 0 1px 5px rgba(0,0,0,.4);
 }
 
-/* 페이지 이동 */
+/* 프로젝트 페이지 이동 */
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 22px;
-  margin: 45px auto 0;
+  margin: 40px auto 35px;
   font-size: 13px;
   color: #777;
 }
@@ -187,14 +206,13 @@ main {
   letter-spacing: 1px;
 }
 
-/* SOSO 소개 및 LOCATION */
+/* SOSO 소개 */
 .info-section {
   max-width: 1100px;
-  min-height: 300px;
-  margin: 100px auto;
-  padding: 70px 30px;
+  min-height: 480px;
+  margin: 0 auto;
+  padding: 100px 30px;
   text-align: center;
-  border-top: 1px solid #eee;
 }
 
 .info-section h2 {
@@ -211,6 +229,7 @@ main {
   color: #777;
 }
 
+/* LOCATION */
 .location-info {
   display: flex;
   flex-direction: column;
@@ -231,9 +250,10 @@ main {
 
 /* 하단 연락처 */
 footer {
+  width: 100%;
+  flex-shrink: 0;
   padding: 14px 20px 8px;
-  border-top: none;
-  text-align: center;
+  text-align: left;
   color: #222;
   font-size: 13px;
   font-weight: 500;
@@ -242,12 +262,10 @@ footer {
 
 .footer-info {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 0 14px;
-  white-space: nowrap;
-  overflow-x: auto;
   color: #333;
   font-size: 13px;
   line-height: 1.3;
@@ -260,7 +278,6 @@ footer {
 
 .copyright {
   margin-top: 3px;
-  padding-top: 0;
   color: #444;
   font-size: 11px;
   line-height: 1.2;
@@ -334,17 +351,17 @@ footer {
     height: 110px;
   }
 
+  #content-area {
+    padding: 0 3%;
+  }
+
   .project-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
 
-  main {
-    margin-top: 25px;
-  }
-
   .main-nav {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
   }
 }
 
@@ -365,7 +382,12 @@ footer {
   .main-nav {
     font-size: 14px;
     gap: 9px;
-    margin-bottom: 28px;
+    margin-bottom: 25px;
+  }
+
+  #content-area {
+    padding: 0 4%;
+    min-height: 420px;
   }
 
   .project-grid {
@@ -375,10 +397,6 @@ footer {
 
   .project-name {
     font-size: 13px;
-  }
-
-  main {
-    padding: 0 4%;
   }
 
   .pagination {
@@ -392,17 +410,17 @@ footer {
 
   .footer-info {
     justify-content: flex-start;
-    gap: 0 10px;
+    gap: 3px 10px;
     font-size: 10px;
   }
 
   .copyright {
-    margin-top: 3px;
+    margin-top: 5px;
   }
 
   .info-section {
-    margin: 60px auto;
-    padding: 50px 15px;
+    min-height: 420px;
+    padding: 70px 15px;
   }
 
   .modal-info {
@@ -414,6 +432,7 @@ footer {
 
 <body>
 
+<!-- 상단 로고 -->
 <header>
   <div class="logo">
     <div class="logo-korean">소소 건축사사무소</div>
@@ -423,157 +442,159 @@ footer {
 
 <!-- 상단 메뉴 -->
 <nav class="main-nav">
-  <a href="#projects">PROJECT</a>
+  <a href="#projects" class="active" data-view="projects">PROJECT</a>
   <span>|</span>
-  <a href="#soso">SOSO</a>
+  <a href="#soso" data-view="soso">SOSO</a>
   <span>|</span>
-  <a href="#location">LOCATION</a>
+  <a href="#location" data-view="location">LOCATION</a>
 </nav>
 
-<!-- 프로젝트 페이지 -->
-<main id="projects">
+<!-- 가운데 콘텐츠 영역 -->
+<div id="content-area">
 
-  <section class="project-grid">
+  <!-- PROJECT 페이지 -->
+  <main id="projects" class="content-view active">
 
-    <button class="project"
-      data-title="프로젝트 01"
-      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-      data-image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=90">
-      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="프로젝트 01">
-      <span class="project-name">프로젝트 01</span>
-    </button>
+    <section class="project-grid">
 
-    <button class="project"
-      data-title="프로젝트 02"
-      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-      data-image="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=90">
-      <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85" alt="프로젝트 02">
-      <span class="project-name">프로젝트 02</span>
-    </button>
+      <button class="project"
+        data-title="프로젝트 01"
+        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+        data-image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=90">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="프로젝트 01">
+        <span class="project-name">프로젝트 01</span>
+      </button>
 
-    <button class="project"
-      data-title="프로젝트 03"
-      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-      data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90">
-      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="프로젝트 03">
-      <span class="project-name">프로젝트 03</span>
-    </button>
+      <button class="project"
+        data-title="프로젝트 02"
+        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+        data-image="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=90">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85" alt="프로젝트 02">
+        <span class="project-name">프로젝트 02</span>
+      </button>
 
-    <button class="project"
-      data-title="프로젝트 04"
-      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-      data-image="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90">
-      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85" alt="프로젝트 04">
-      <span class="project-name">프로젝트 04</span>
-    </button>
+      <button class="project"
+        data-title="프로젝트 03"
+        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+        data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90">
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="프로젝트 03">
+        <span class="project-name">프로젝트 03</span>
+      </button>
 
-    <button class="project"
-      data-title="프로젝트 05"
-      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-      data-image="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1600&q=90">
-      <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=900&q=85" alt="프로젝트 05">
-      <span class="project-name">프로젝트 05</span>
-    </button>
+      <button class="project"
+        data-title="프로젝트 04"
+        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+        data-image="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85" alt="프로젝트 04">
+        <span class="project-name">프로젝트 04</span>
+      </button>
 
-    <button class="project"
-      data-title="프로젝트 06"
-      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-      data-image="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=90">
-      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85" alt="프로젝트 06">
-      <span class="project-name">프로젝트 06</span>
-    </button>
+      <button class="project"
+        data-title="프로젝트 05"
+        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+        data-image="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1600&q=90">
+        <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=900&q=85" alt="프로젝트 05">
+        <span class="project-name">프로젝트 05</span>
+      </button>
 
-    <button class="project"
-      data-title="프로젝트 07"
-      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-      data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90">
-      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="프로젝트 07">
-      <span class="project-name">프로젝트 07</span>
-    </button>
+      <button class="project"
+        data-title="프로젝트 06"
+        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+        data-image="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=90">
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85" alt="프로젝트 06">
+        <span class="project-name">프로젝트 06</span>
+      </button>
 
-    <button class="project"
-      data-title="프로젝트 08"
-      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-      data-image="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1600&q=90">
-      <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=900&q=85" alt="프로젝트 08">
-      <span class="project-name">프로젝트 08</span>
-    </button>
+      <button class="project"
+        data-title="프로젝트 07"
+        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+        data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90">
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="프로젝트 07">
+        <span class="project-name">프로젝트 07</span>
+      </button>
 
-    <button class="project"
-      data-title="프로젝트 09"
-      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-      data-image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=90">
-      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="프로젝트 09">
-      <span class="project-name">프로젝트 09</span>
-    </button>
+      <button class="project"
+        data-title="프로젝트 08"
+        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+        data-image="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1600&q=90">
+        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=900&q=85" alt="프로젝트 08">
+        <span class="project-name">프로젝트 08</span>
+      </button>
 
-    <button class="project"
-      data-title="프로젝트 10"
-      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-      data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90">
-      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="프로젝트 10">
-      <span class="project-name">프로젝트 10</span>
-    </button>
+      <button class="project"
+        data-title="프로젝트 09"
+        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+        data-image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=90">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="프로젝트 09">
+        <span class="project-name">프로젝트 09</span>
+      </button>
 
-    <button class="project"
-      data-title="프로젝트 11"
-      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-      data-image="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90">
-      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85" alt="프로젝트 11">
-      <span class="project-name">프로젝트 11</span>
-    </button>
+      <button class="project"
+        data-title="프로젝트 10"
+        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+        data-image="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=90">
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="프로젝트 10">
+        <span class="project-name">프로젝트 10</span>
+      </button>
 
-    <button class="project"
-      data-title="프로젝트 12"
-      data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
-      data-image="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=90">
-      <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85" alt="프로젝트 12">
-      <span class="project-name">프로젝트 12</span>
-    </button>
+      <button class="project"
+        data-title="프로젝트 11"
+        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+        data-image="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85" alt="프로젝트 11">
+        <span class="project-name">프로젝트 11</span>
+      </button>
 
-    <!--
-      새 프로젝트를 추가할 때는 위의 project 버튼을 복사하여
-      이 아래에 붙여넣으면 자동으로 다음 페이지에 표시됩니다.
-    -->
+      <button class="project"
+        data-title="프로젝트 12"
+        data-description="프로젝트의 위치, 규모 및 설계 개념을 소개하는 공간입니다."
+        data-image="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=90">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85" alt="프로젝트 12">
+        <span class="project-name">프로젝트 12</span>
+      </button>
 
+      <!-- 새 프로젝트는 이 위치에 기존 project 버튼을 복사하여 추가 -->
+
+    </section>
+
+    <!-- 페이지 이동 -->
+    <div class="pagination">
+      <button id="prevPage" type="button">PREV</button>
+      <span id="pageInfo">1 / 1</span>
+      <button id="nextPage" type="button">NEXT</button>
+    </div>
+
+  </main>
+
+  <!-- SOSO 페이지 -->
+  <section class="info-section content-view" id="soso">
+    <h2>SOSO ARCHITECTS</h2>
+    <p>
+      소소 건축사사무소는 작은것의 가치를 추구합니다.
+    </p>
   </section>
 
-  <!-- 페이지 이동 버튼 -->
-  <div class="pagination">
-    <button id="prevPage" type="button">PREV</button>
-    <span id="pageInfo">1 / 1</span>
-    <button id="nextPage" type="button">NEXT</button>
-  </div>
+  <!-- LOCATION 페이지 -->
+  <section class="info-section content-view" id="location">
+    <h2>LOCATION</h2>
 
-</main>
+    <div class="location-info">
+      <p>서울시 구로구 디지털로27가길 17, 303호</p>
+      <p>T: <a href="tel:0269537173">02-6953-7173</a></p>
+      <p>F: 02-6953-7174</p>
+      <p>E: <a href="mailto:sosotelling@naver.com">sosotelling@naver.com</a></p>
+    </div>
+  </section>
 
-<!-- SOSO 소개 페이지 -->
-<section class="info-section" id="soso">
-  <h2>SOSO ARCHITECTS</h2>
-  <p>
-    소소 건축사사무소는 작은것의 가치를 추구합니다.
-  </p>
-</section>
-
-<!-- LOCATION 페이지 -->
-<section class="info-section" id="location">
-  <h2>LOCATION</h2>
-
-  <div class="location-info">
-    <p>서울시 구로구 디지털로27가길 17, 303호</p>
-    <p>T: <a href="tel:0269537173">02-6953-7173</a></p>
-    <p>F: 02-6953-7174</p>
-    <p>E: <a href="mailto:sosotelling@naver.com">sosotelling@naver.com</a></p>
-  </div>
-</section>
+</div>
 
 <!-- 하단 정보 -->
 <footer>
   <div class="footer-info">
+    <span>서울시 구로구 디지털로27가길 17, 303호</span>
     <span>T: <a href="tel:0269537173">02-6953-7173</a></span>
     <span>F: 02-6953-7174</span>
     <span>E: <a href="mailto:sosotelling@naver.com">sosotelling@naver.com</a></span>
-    <span>서울시 구로구 디지털로27가길 17, 303호</span>
   </div>
 
   <div class="copyright">
@@ -600,6 +621,35 @@ footer {
 </div>
 
 <script>
+/* 콘텐츠 전환 기능 */
+const navLinks = document.querySelectorAll(".main-nav a");
+const contentViews = document.querySelectorAll(".content-view");
+
+navLinks.forEach(link => {
+  link.addEventListener("click", event => {
+    event.preventDefault();
+
+    const targetId = link.dataset.view;
+
+    contentViews.forEach(view => {
+      view.classList.remove("active");
+    });
+
+    navLinks.forEach(nav => {
+      nav.classList.remove("active");
+    });
+
+    document.getElementById(targetId).classList.add("active");
+    link.classList.add("active");
+
+    if (targetId === "projects") {
+      showPage(1);
+    }
+
+    closeModal();
+  });
+});
+
 /* 프로젝트 페이지 기능 */
 const projects = Array.from(document.querySelectorAll(".project"));
 const pageSize = 12;
@@ -631,9 +681,6 @@ function showPage(page) {
 prevButton.addEventListener("click", () => {
   if (currentPage > 1) {
     showPage(currentPage - 1);
-    document.getElementById("projects").scrollIntoView({
-      behavior: "smooth"
-    });
   }
 });
 
@@ -642,9 +689,6 @@ nextButton.addEventListener("click", () => {
 
   if (currentPage < totalPages) {
     showPage(currentPage + 1);
-    document.getElementById("projects").scrollIntoView({
-      behavior: "smooth"
-    });
   }
 });
 
@@ -678,11 +722,15 @@ document.getElementById("closeModal")
   .addEventListener("click", closeModal);
 
 modal.addEventListener("click", event => {
-  if (event.target === modal) closeModal();
+  if (event.target === modal) {
+    closeModal();
+  }
 });
 
 document.addEventListener("keydown", event => {
-  if (event.key === "Escape") closeModal();
+  if (event.key === "Escape") {
+    closeModal();
+  }
 });
 </script>
 
