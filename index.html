@@ -14,12 +14,17 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, "Noto Sans KR", sans-serif;
   background: #fff;
   color: #222;
 }
 
+/* 상단 로고 */
 header {
   height: 125px;
   display: flex;
@@ -52,17 +57,36 @@ header {
   color: #777;
 }
 
+/* 상단 메뉴 */
 .main-nav {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
   margin: 0 auto 48px;
   text-align: center;
   line-height: 1.2;
   font-size: 17px;
   font-weight: 500;
   letter-spacing: 1px;
-  color: #222;
+  color: #888;
 }
 
+.main-nav a {
+  color: #888;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.main-nav a:hover {
+  color: #477653;
+}
+
+.main-nav span {
+  color: #bbb;
+}
+
+/* 메인 프로젝트 */
 main {
   max-width: 1500px;
   margin: 25px auto 90px;
@@ -124,6 +148,85 @@ main {
   font-weight: 500;
   letter-spacing: 1px;
   text-shadow: 0 1px 5px rgba(0,0,0,.4);
+}
+
+/* 페이지 이동 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  margin: 45px auto 0;
+  font-size: 13px;
+  color: #777;
+}
+
+.pagination button {
+  border: none;
+  background: none;
+  color: #777;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 8px 5px;
+  transition: color .2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  color: #477653;
+}
+
+.pagination button:disabled {
+  color: #ccc;
+  cursor: default;
+}
+
+#pageInfo {
+  min-width: 50px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* SOSO 소개 및 LOCATION */
+.info-section {
+  max-width: 1100px;
+  min-height: 300px;
+  margin: 100px auto;
+  padding: 70px 30px;
+  text-align: center;
+  border-top: 1px solid #eee;
+}
+
+.info-section h2 {
+  margin-bottom: 35px;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: #477653;
+}
+
+.info-section p {
+  font-size: 14px;
+  line-height: 2;
+  color: #777;
+}
+
+.location-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #555;
+}
+
+.location-info a {
+  color: #555;
+  text-decoration: none;
+}
+
+.location-info a:hover {
+  color: #477653;
 }
 
 /* 하단 연락처 */
@@ -239,6 +342,10 @@ footer {
   main {
     margin-top: 25px;
   }
+
+  .main-nav {
+    margin-bottom: 35px;
+  }
 }
 
 /* 스마트폰 */
@@ -249,6 +356,16 @@ footer {
 
   .logo-korean {
     font-size: 32px;
+  }
+
+  .logo-english {
+    font-size: 13.2px;
+  }
+
+  .main-nav {
+    font-size: 14px;
+    gap: 9px;
+    margin-bottom: 28px;
   }
 
   .project-grid {
@@ -264,6 +381,11 @@ footer {
     padding: 0 4%;
   }
 
+  .pagination {
+    margin-top: 30px;
+    gap: 15px;
+  }
+
   footer {
     padding: 12px 12px 8px;
   }
@@ -276,6 +398,11 @@ footer {
 
   .copyright {
     margin-top: 3px;
+  }
+
+  .info-section {
+    margin: 60px auto;
+    padding: 50px 15px;
   }
 
   .modal-info {
@@ -294,8 +421,17 @@ footer {
   </div>
 </header>
 
-<main>
-  <nav class="main-nav">PROJECT | SOSO | LOCATION</nav>
+<!-- 상단 메뉴 -->
+<nav class="main-nav">
+  <a href="#projects">PROJECT</a>
+  <span>|</span>
+  <a href="#soso">SOSO</a>
+  <span>|</span>
+  <a href="#location">LOCATION</a>
+</nav>
+
+<!-- 프로젝트 페이지 -->
+<main id="projects">
 
   <section class="project-grid">
 
@@ -395,15 +531,49 @@ footer {
       <span class="project-name">프로젝트 12</span>
     </button>
 
+    <!--
+      새 프로젝트를 추가할 때는 위의 project 버튼을 복사하여
+      이 아래에 붙여넣으면 자동으로 다음 페이지에 표시됩니다.
+    -->
+
   </section>
+
+  <!-- 페이지 이동 버튼 -->
+  <div class="pagination">
+    <button id="prevPage" type="button">PREV</button>
+    <span id="pageInfo">1 / 1</span>
+    <button id="nextPage" type="button">NEXT</button>
+  </div>
+
 </main>
 
+<!-- SOSO 소개 페이지 -->
+<section class="info-section" id="soso">
+  <h2>SOSO ARCHITECTS</h2>
+  <p>
+    소소 건축사사무소는 작은것의 가치를 추구합니다.
+  </p>
+</section>
+
+<!-- LOCATION 페이지 -->
+<section class="info-section" id="location">
+  <h2>LOCATION</h2>
+
+  <div class="location-info">
+    <p>서울시 구로구 디지털로27가길 17, 303호</p>
+    <p>T: <a href="tel:0269537173">02-6953-7173</a></p>
+    <p>F: 02-6953-7174</p>
+    <p>E: <a href="mailto:sosotelling@naver.com">sosotelling@naver.com</a></p>
+  </div>
+</section>
+
+<!-- 하단 정보 -->
 <footer>
   <div class="footer-info">
-    <span>서울시 구로구 디지털로27가길 17, 303호</a></span>
-    <span>T: <a href="tel:0269537173">02-6953-7173</span>
+    <span>T: <a href="tel:0269537173">02-6953-7173</a></span>
     <span>F: 02-6953-7174</span>
     <span>E: <a href="mailto:sosotelling@naver.com">sosotelling@naver.com</a></span>
+    <span>서울시 구로구 디지털로27가길 17, 303호</span>
   </div>
 
   <div class="copyright">
@@ -411,6 +581,7 @@ footer {
   </div>
 </footer>
 
+<!-- 프로젝트 상세 팝업 -->
 <div class="modal" id="projectModal"
      role="dialog" aria-modal="true"
      aria-labelledby="modalTitle">
@@ -429,12 +600,63 @@ footer {
 </div>
 
 <script>
+/* 프로젝트 페이지 기능 */
+const projects = Array.from(document.querySelectorAll(".project"));
+const pageSize = 12;
+let currentPage = 1;
+
+const prevButton = document.getElementById("prevPage");
+const nextButton = document.getElementById("nextPage");
+const pageInfo = document.getElementById("pageInfo");
+
+function showPage(page) {
+  const totalPages = Math.max(1, Math.ceil(projects.length / pageSize));
+
+  currentPage = Math.max(1, Math.min(page, totalPages));
+
+  projects.forEach((project, index) => {
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+
+    project.style.display =
+      index >= startIndex && index < endIndex ? "block" : "none";
+  });
+
+  pageInfo.textContent = currentPage + " / " + totalPages;
+
+  prevButton.disabled = currentPage === 1;
+  nextButton.disabled = currentPage === totalPages;
+}
+
+prevButton.addEventListener("click", () => {
+  if (currentPage > 1) {
+    showPage(currentPage - 1);
+    document.getElementById("projects").scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+});
+
+nextButton.addEventListener("click", () => {
+  const totalPages = Math.ceil(projects.length / pageSize);
+
+  if (currentPage < totalPages) {
+    showPage(currentPage + 1);
+    document.getElementById("projects").scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+});
+
+showPage(1);
+
+/* 프로젝트 상세 팝업 기능 */
 const modal = document.getElementById("projectModal");
 const modalImage = document.getElementById("modalImage");
 const modalTitle = document.getElementById("modalTitle");
 const modalDescription = document.getElementById("modalDescription");
 
-document.querySelectorAll(".project").forEach(project => {
+projects.forEach(project => {
   project.addEventListener("click", () => {
     modalTitle.textContent = project.dataset.title;
     modalDescription.textContent = project.dataset.description;
