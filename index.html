@@ -14,9 +14,7 @@
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   min-height: 100vh;
@@ -27,7 +25,7 @@ body {
   color: #222;
 }
 
-/* 상단 로고 */
+/* HEADER */
 header {
   height: 125px;
   flex-shrink: 0;
@@ -37,9 +35,7 @@ header {
   padding: 0 20px;
 }
 
-.logo {
-  text-align: center;
-}
+.logo { text-align: center; }
 
 .logo-korean {
   white-space: nowrap;
@@ -58,10 +54,9 @@ header {
   letter-spacing: 2.5px;
   line-height: 1.2;
   color: #777;
-  text-align: center;
 }
 
-/* 상단 메뉴 */
+/* NAVIGATION */
 .main-nav {
   display: flex;
   justify-content: center;
@@ -88,11 +83,9 @@ header {
   color: #477653;
 }
 
-.main-nav span {
-  color: #bbb;
-}
+.main-nav span { color: #bbb; }
 
-/* 가운데 콘텐츠 */
+/* CONTENT */
 #content-area {
   width: 100%;
   max-width: 1500px;
@@ -107,11 +100,9 @@ header {
   width: 100%;
 }
 
-.content-view.active {
-  display: block;
-}
+.content-view.active { display: block; }
 
-/* 프로젝트 썸네일 */
+/* PROJECT GRID */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -146,9 +137,7 @@ header {
   transition: background .35s ease;
 }
 
-.project:hover img {
-  transform: scale(1.06);
-}
+.project:hover img { transform: scale(1.06); }
 
 .project:hover::after {
   background: rgba(0,0,0,.48);
@@ -169,7 +158,7 @@ header {
   text-shadow: 0 1px 5px rgba(0,0,0,.4);
 }
 
-/* 페이지 이동 */
+/* PAGINATION */
 .pagination {
   display: flex;
   justify-content: center;
@@ -190,10 +179,7 @@ header {
   padding: 8px 5px;
 }
 
-.pagination button:hover:not(:disabled) {
-  color: #477653;
-}
-
+.pagination button:hover:not(:disabled) { color: #477653; }
 .pagination button:disabled {
   color: #ccc;
   cursor: default;
@@ -205,7 +191,7 @@ header {
   letter-spacing: 1px;
 }
 
-/*  / LOCATION */
+/* LOCATION */
 .info-section {
   max-width: 1100px;
   min-height: 480px;
@@ -242,16 +228,14 @@ header {
   text-decoration: none;
 }
 
-.location-info a:hover {
-  color: #477653;
-}
+.location-info a:hover { color: #477653; }
 
-/* 하단 정보 - PC 및 모바일 중앙 정렬 */
+/* FOOTER */
 footer {
   width: 100%;
   flex-shrink: 0;
   padding: 14px 20px 8px;
-  text-align: center !important;
+  text-align: center;
   color: #222;
   font-size: 13px;
   font-weight: 500;
@@ -261,22 +245,17 @@ footer {
 .footer-info {
   width: 100%;
   display: flex;
-  justify-content: center !important;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 3px 14px;
-  white-space: normal;
-  overflow: visible;
   color: #333;
   font-size: 13px;
   line-height: 1.5;
-  text-align: center !important;
-}
-
-.footer-info span {
-  display: inline-block;
   text-align: center;
 }
+
+.footer-info span { display: inline-block; }
 
 .footer-info a {
   color: #222;
@@ -289,10 +268,301 @@ footer {
   color: #444;
   font-size: 11px;
   line-height: 1.4;
-  text-align: center !important;
+  text-align: center;
 }
 
-/* 프로젝트 상세 팝업 */
+/* =================================
+   SOSO ABOUT PAGE
+================================= */
+
+#soso {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 3%;
+}
+
+/* INTRO */
+.soso-intro {
+  padding: 65px 0 55px;
+}
+
+.soso-eyebrow {
+  margin: 0 0 30px;
+  color: #777;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.soso-intro h2 {
+  margin: 0;
+  font-size: clamp(38px, 5.5vw, 64px);
+  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: -3px;
+}
+
+.soso-intro-en {
+  margin: 22px 0 0;
+  color: #888;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+}
+
+/* INTRO TEXT */
+.soso-intro-bottom {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 50px;
+  padding: 35px 0 75px;
+}
+
+.soso-intro-label {
+  color: #477653;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.soso-intro-bottom p {
+  max-width: 650px;
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 2.1;
+  word-break: keep-all;
+}
+
+/* SECTION HEADING */
+.soso-section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #888;
+}
+
+.soso-section-heading span {
+  color: #477653;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.soso-section-heading p {
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 1.7px;
+  line-height: 1.6;
+}
+
+/* PHILOSOPHY */
+.soso-philosophy {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 50px;
+  padding: 85px 0;
+}
+
+.soso-philosophy-body h3 {
+  margin: 0 0 30px;
+  font-size: 32px;
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: -1.5px;
+}
+
+.soso-philosophy-body p {
+  max-width: 650px;
+  margin: 0 0 17px;
+  color: #666;
+  font-size: 14px;
+  line-height: 2.1;
+  word-break: keep-all;
+}
+
+/* PRINCIPAL */
+.soso-principal {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 50px;
+  padding: 85px 0;
+}
+
+.soso-principal-name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: sticky;
+  top: 30px;
+  height: fit-content;
+}
+
+.soso-principal-name p {
+  margin: 0 0 15px;
+  color: #888;
+  font-size: 12px;
+}
+
+.soso-principal-name h3 {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+
+.soso-principal-name > span {
+  margin-top: 12px;
+  color: #888;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.soso-principal-name .soso-registered {
+  margin-top: 7px;
+  color: #477653;
+  font-size: 12px;
+  letter-spacing: .5px;
+}
+
+.soso-principal-text h4 {
+  margin: 0 0 30px;
+  font-size: 25px;
+  line-height: 1.6;
+  font-weight: 500;
+  letter-spacing: -1px;
+  word-break: keep-all;
+}
+
+.soso-principal-text p {
+  margin: 0 0 19px;
+  color: #666;
+  font-size: 13px;
+  line-height: 2.1;
+  word-break: keep-all;
+}
+
+.soso-principal-sign {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 15px;
+  margin-top: 45px;
+  padding-top: 20px;
+  color: #777;
+  font-size: 12px;
+}
+
+.soso-principal-sign strong {
+  color: #292929;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+/* RECORDS */
+.soso-records {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 65px;
+  padding: 85px 0;
+}
+
+.soso-record {
+  display: grid;
+  grid-template-columns: 1fr 1.7fr;
+  gap: 25px;
+}
+
+.soso-record-content h3,
+.soso-career-content h3 {
+  margin: 0 0 28px;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -.8px;
+}
+
+.soso-record-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 10px;
+  padding: 13px 0;
+}
+
+.soso-year {
+  color: #888;
+  font-size: 11px;
+  line-height: 1.8;
+  white-space: nowrap;
+}
+
+.soso-record-title {
+  color: #555;
+  font-size: 12px;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+.soso-record-title small {
+  color: #888;
+  font-size: 11px;
+}
+
+/* CAREER */
+.soso-career {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 50px;
+  padding: 85px 0;
+}
+
+.soso-career-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 20px;
+  padding: 15px 0;
+}
+
+.soso-career-row span {
+  color: #888;
+  font-size: 12px;
+}
+
+.soso-career-row strong {
+  color: #555;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* ENDING */
+.soso-ending {
+  padding: 70px 0 50px;
+  color: #477653;
+}
+
+.soso-ending p {
+  margin: 0;
+  font-size: 25px;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+.soso-ending span {
+  display: block;
+  margin-top: 13px;
+  color: #888;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* SOSO PAGE - REMOVE ALL HORIZONTAL LINES */
+#soso .soso-intro-bottom,
+#soso .soso-philosophy,
+#soso .soso-principal,
+#soso .soso-records,
+#soso .soso-record-row,
+#soso .soso-career,
+#soso .soso-career-row,
+#soso .soso-principal-sign {
+  border: none !important;
+}
+
+/* PROJECT MODAL */
 .modal {
   display: none;
   position: fixed;
@@ -304,9 +574,7 @@ footer {
   justify-content: center;
 }
 
-.modal.open {
-  display: flex;
-}
+.modal.open { display: flex; }
 
 .modal-content {
   position: relative;
@@ -324,9 +592,7 @@ footer {
   background: #eee;
 }
 
-.modal-info {
-  padding: 25px 30px 30px;
-}
+.modal-info { padding: 25px 30px 30px; }
 
 .modal-info h2 {
   font-size: 21px;
@@ -354,39 +620,26 @@ footer {
   cursor: pointer;
 }
 
-/* 태블릿 */
+/* TABLET */
 @media (max-width: 800px) {
-  header {
-    height: 110px;
-  }
+  header { height: 110px; }
 
-  #content-area {
-    padding: 0 3%;
-  }
+  #content-area { padding: 0 3%; }
 
   .project-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
 
-  .main-nav {
-    margin-bottom: 30px;
-  }
+  .main-nav { margin-bottom: 30px; }
 }
 
-/* 스마트폰 */
+/* MOBILE */
 @media (max-width: 480px) {
-  header {
-    height: 100px;
-  }
+  header { height: 100px; }
 
-  .logo-korean {
-    font-size: 32px;
-  }
-
-  .logo-english {
-    font-size: 13.2px;
-  }
+  .logo-korean { font-size: 32px; }
+  .logo-english { font-size: 13.2px; }
 
   .main-nav {
     font-size: 14px;
@@ -404,76 +657,123 @@ footer {
     gap: 10px;
   }
 
-  .project-name {
-    font-size: 13px;
-  }
+  .project-name { font-size: 13px; }
 
   .pagination {
     margin-top: 30px;
     gap: 15px;
   }
 
-  /* 모바일 하단도 중앙 정렬 */
-  footer {
-    padding: 12px 12px 8px;
-    text-align: center !important;
-  }
+  footer { padding: 12px 12px 8px; }
 
   .footer-info {
-    justify-content: center !important;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 3px 10px;
-    white-space: normal;
-    overflow: visible;
     font-size: 10px;
-    text-align: center !important;
   }
 
-  .footer-info span {
-    text-align: center;
-  }
-
-  .copyright {
-    margin-top: 5px;
-    text-align: center !important;
-  }
+  .copyright { margin-top: 5px; }
 
   .info-section {
     min-height: 420px;
     padding: 70px 15px;
   }
 
-  .modal-info {
-    padding: 20px;
+  .modal-info { padding: 20px; }
+}
+
+/* SOSO RESPONSIVE */
+@media (max-width: 700px) {
+  #soso { padding: 0 4%; }
+
+  .soso-intro { padding: 45px 0 35px; }
+
+  .soso-intro h2 {
+    font-size: 38px;
+    letter-spacing: -2px;
   }
+
+  .soso-intro-en { margin-bottom: 0; }
+
+  .soso-intro-bottom,
+  .soso-philosophy,
+  .soso-principal,
+  .soso-career {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .soso-intro-bottom { padding: 28px 0 45px; }
+
+  .soso-philosophy,
+  .soso-principal,
+  .soso-career {
+    padding: 55px 0;
+  }
+
+  .soso-philosophy-body h3 { font-size: 27px; }
+
+  .soso-principal-name { position: static; }
+
+  .soso-principal-name h3 { font-size: 40px; }
+
+  .soso-principal-text h4 { font-size: 22px; }
+
+  .soso-records {
+    grid-template-columns: 1fr;
+    gap: 55px;
+    padding: 55px 0;
+  }
+
+  .soso-record {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .soso-record-content h3,
+  .soso-career-content h3 { font-size: 21px; }
+
+  .soso-record-row { grid-template-columns: 90px 1fr; }
+
+  .soso-career-row {
+    grid-template-columns: 115px 1fr;
+    gap: 12px;
+  }
+
+  .soso-career-row span,
+  .soso-career-row strong { font-size: 11px; }
+
+  .soso-ending { padding-top: 50px; }
+  .soso-ending p { font-size: 21px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 상단 로고 -->
+<!-- HEADER -->
 <header>
   <div class="logo">
     <div class="logo-korean">소소 건축사사무소</div>
-    <div class="logo-english"> ARCHITECTS</div>
+    <div class="logo-english">ARCHITECTS</div>
   </div>
 </header>
 
-<!-- 상단 메뉴 -->
+<!-- NAVIGATION -->
 <nav class="main-nav">
   <a href="#projects" class="active" data-view="projects">PROJECT</a>
   <span>|</span>
-  <a href="#" data-view=""></a>
+  <a href="#soso" data-view="soso">SOSO</a>
   <span>|</span>
   <a href="#location" data-view="location">LOCATION</a>
 </nav>
 
-<!-- 가운데 콘텐츠 영역 -->
+<!-- CONTENT -->
 <div id="content-area">
 
-  <!-- PROJECT 페이지 -->
+  <!-- PROJECT PAGE -->
   <main id="projects" class="content-view active">
     <section class="project-grid">
 
@@ -577,7 +877,6 @@ footer {
 
     </section>
 
-    <!-- 페이지 이동 -->
     <div class="pagination">
       <button id="prevPage" type="button">PREV</button>
       <span id="pageInfo">1 / 1</span>
@@ -585,25 +884,37 @@ footer {
     </div>
   </main>
 
- <!--  페이지 -->
-<section class="-editorial content-view" id="soso">
+  <!-- SOSO ABOUT PAGE -->
+  <section class="content-view" id="soso">
 
+    <!-- INTRO -->
+    <div class="soso-intro">
+      <p class="soso-eyebrow">ABOUT SOSO ARCHITECTS</p>
 
+      <h2>
+        작은것의 가치,<br>
+        건축으로 이야기합니다.
+      </h2>
 
-      <div class="soso-intro-bottom">
-        <div class="soso-intro-label">SOSO ARCHITECTS</div>
-        <p>
-          소소 건축사사무소는 일상 속 작은 가치에서 건축의 가능성을 찾습니다.
-          사람과 장소, 환경의 관계를 세심하게 살피며
-          그 안에 담긴 고유한 이야기를 공간으로 구현합니다.
-          <br><br>
-          공공건축에서 소규모 건축물에 이르기까지,
-          건축의 규모와 용도에 관계없이 본질에 집중하고
-          현실적인 가능성 안에서 더 나은 공간을 제안합니다.
-        </p>
-      </div>
+      <p class="soso-intro-en">
+        Architecture begins with the value of small things.
+      </p>
     </div>
 
+    <!-- INTRODUCTION -->
+    <div class="soso-intro-bottom">
+      <div class="soso-intro-label">SOSO ARCHITECTS</div>
+
+      <p>
+        소소 건축사사무소는 일상 속 작은 가치에서 건축의 가능성을 찾습니다.
+        사람과 장소, 환경의 관계를 세심하게 살피며
+        그 안에 담긴 고유한 이야기를 공간으로 구현합니다.
+        <br><br>
+        공공건축에서 소규모 건축물에 이르기까지,
+        건축의 규모와 용도에 관계없이 본질에 집중하고
+        현실적인 가능성 안에서 더 나은 공간을 제안합니다.
+      </p>
+    </div>
 
     <!-- PHILOSOPHY -->
     <div class="soso-philosophy">
@@ -634,10 +945,8 @@ footer {
       </div>
     </div>
 
-
     <!-- PRINCIPAL -->
     <div class="soso-principal">
-
       <div class="soso-section-heading">
         <span>02</span>
         <p>PRINCIPAL</p>
@@ -653,7 +962,10 @@ footer {
         </div>
 
         <div class="soso-principal-text">
-          <h4>건축을 통해 의미 있는 작업과<br>지역사회에 가치 있는 역할을 합니다.</h4>
+          <h4>
+            건축을 통해 의미 있는 작업과<br>
+            지역사회에 가치 있는 역할을 합니다.
+          </h4>
 
           <p>
             건축공학을 전공하고 한양대학교 건축전문대학원에서
@@ -702,10 +1014,10 @@ footer {
       </div>
     </div>
 
-
-    <!-- EDUCATION -->
+    <!-- EDUCATION & ASSOCIATION -->
     <div class="soso-records">
 
+      <!-- EDUCATION -->
       <div class="soso-record">
         <div class="soso-section-heading">
           <span>03</span>
@@ -734,7 +1046,6 @@ footer {
           </div>
         </div>
       </div>
-
 
       <!-- ASSOCIATION -->
       <div class="soso-record">
@@ -782,13 +1093,10 @@ footer {
           </div>
         </div>
       </div>
-
     </div>
-
 
     <!-- CAREER -->
     <div class="soso-career">
-
       <div class="soso-section-heading">
         <span>05</span>
         <p>CAREER</p>
@@ -834,404 +1142,37 @@ footer {
       </div>
     </div>
 
-
     <!-- ENDING -->
     <div class="soso-ending">
       <p>SOSO ARCHITECTS</p>
       <span>작은것의 가치를 추구합니다.</span>
     </div>
 
-  </div>
-</section>
-
-
-<style>
-/* =================================
-   SOSO EDITORIAL
-   기존 헤더 / 메뉴 / 푸터 영향 없음
-================================= */
-
-
-
-/* INTRO */
-
-.soso-eyebrow {
-  margin: 0 0 35px;
-  color: #777;
-  font-size: 11px;
-  letter-spacing: 3px;
-}
-
-.soso-intro h2 {
-  margin: 0;
-  font-size: clamp(38px, 5.5vw, 64px);
-  line-height: 1.35;
-  font-weight: 500;
-  letter-spacing: -3px;
-}
-
-.soso-intro-en {
-  margin: 22px 0 65px;
-  color: #888;
-  font-size: 13px;
-  letter-spacing: 1.5px;
-}
-
-.soso-intro-bottom {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 50px;
-  padding: 35px 0 75px;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-}
-
-.soso-intro-label {
-  color: #477653;
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-
-.soso-intro-bottom p {
-  max-width: 650px;
-  margin: 0;
-  color: #666;
-  font-size: 14px;
-  line-height: 2.1;
-  word-break: keep-all;
-}
-
-
-/* SECTION HEADING */
-
-.soso-section-heading {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  color: #888;
-}
-
-.soso-section-heading span {
-  color: #477653;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-.soso-section-heading p {
-  margin: 0;
-  font-size: 10px;
-  letter-spacing: 1.7px;
-  line-height: 1.6;
-}
-
-
-/* PHILOSOPHY */
-
-.soso-philosophy {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 50px;
-  padding: 85px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.soso-philosophy-body h3 {
-  margin: 0 0 30px;
-  font-size: 32px;
-  line-height: 1.5;
-  font-weight: 500;
-  letter-spacing: -1.5px;
-}
-
-.soso-philosophy-body p {
-  max-width: 650px;
-  margin: 0 0 17px;
-  color: #666;
-  font-size: 14px;
-  line-height: 2.1;
-  word-break: keep-all;
-}
-
-
-/* PRINCIPAL */
-
-.soso-principal {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 50px;
-  padding: 85px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.soso-principal-name {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: sticky;
-  top: 30px;
-  height: fit-content;
-}
-
-.soso-principal-name p {
-  margin: 0 0 15px;
-  color: #888;
-  font-size: 12px;
-}
-
-.soso-principal-name h3 {
-  margin: 0;
-  font-size: 48px;
-  font-weight: 500;
-  letter-spacing: -2px;
-}
-
-.soso-principal-name > span {
-  margin-top: 12px;
-  color: #888;
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-
-.soso-principal-name .soso-registered {
-  margin-top: 7px;
-  color: #477653;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-}
-
-.soso-principal-text h4 {
-  margin: 0 0 30px;
-  font-size: 25px;
-  line-height: 1.6;
-  font-weight: 500;
-  letter-spacing: -1px;
-  word-break: keep-all;
-}
-
-.soso-principal-text p {
-  margin: 0 0 19px;
-  color: #666;
-  font-size: 13px;
-  line-height: 2.1;
-  word-break: keep-all;
-}
-
-.soso-principal-sign {
-  display: flex;
-  justify-content: flex-end;
-  align-items: baseline;
-  gap: 15px;
-  margin-top: 45px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
-  color: #777;
-  font-size: 12px;
-}
-
-.soso-principal-sign strong {
-  color: #292929;
-  font-size: 17px;
-  font-weight: 500;
-}
-
-
-/* RECORDS */
-
-.soso-records {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 65px;
-  padding: 85px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.soso-record {
-  display: grid;
-  grid-template-columns: 1fr 1.7fr;
-  gap: 25px;
-}
-
-.soso-record-content h3,
-.soso-career-content h3 {
-  margin: 0 0 28px;
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: -0.8px;
-}
-
-.soso-record-row {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 10px;
-  padding: 13px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.soso-year {
-  color: #888;
-  font-size: 11px;
-  line-height: 1.8;
-  white-space: nowrap;
-}
-
-.soso-record-title {
-  color: #555;
-  font-size: 12px;
-  line-height: 1.8;
-  word-break: keep-all;
-}
-
-.soso-record-title small {
-  color: #888;
-  font-size: 11px;
-}
-
-
-/* CAREER */
-
-.soso-career {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 50px;
-  padding: 85px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.soso-career-row {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 20px;
-  padding: 15px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.soso-career-row span {
-  color: #888;
-  font-size: 12px;
-}
-
-.soso-career-row strong {
-  color: #555;
-  font-size: 13px;
-  font-weight: 400;
-}
-
-
-/* ENDING */
-
-.soso-ending {
-  padding-top: 70px;
-  color: #477653;
-}
-
-.soso-ending p {
-  margin: 0;
-  font-size: 25px;
-  letter-spacing: 3px;
-  font-weight: 500;
-}
-
-.soso-ending span {
-  display: block;
-  margin-top: 13px;
-  color: #888;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-
-  
-
-  .soso-intro h2 {
-    font-size: 38px;
-    letter-spacing: -2px;
-  }
-
-  .soso-intro-en {
-    margin-bottom: 40px;
-  }
-
-  .soso-intro-bottom,
-  .soso-philosophy,
-  .soso-principal,
-  .soso-career {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .soso-intro-bottom {
-    padding: 28px 0 45px;
-  }
-
-  .soso-philosophy,
-  .soso-principal,
-  .soso-career {
-    padding: 55px 0;
-  }
-
-  .soso-philosophy-body h3 {
-    font-size: 27px;
-  }
-
-  .soso-principal-name {
-    position: static;
-  }
-
-  .soso-principal-name h3 {
-    font-size: 40px;
-  }
-
-  .soso-principal-text h4 {
-    font-size: 22px;
-  }
-
-  .soso-records {
-    grid-template-columns: 1fr;
-    gap: 55px;
-    padding: 55px 0;
-  }
-
-  .soso-record {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  .soso-record-content h3,
-  .soso-career-content h3 {
-    font-size: 21px;
-  }
-
-  .soso-record-row {
-    grid-template-columns: 90px 1fr;
-  }
-
-  .soso-career-row {
-    grid-template-columns: 115px 1fr;
-    gap: 12px;
-  }
-
-  .soso-career-row span,
-  .soso-career-row strong {
-    font-size: 11px;
-  }
-
-  .soso-ending {
-    padding-top: 50px;
-  }
-
-  .soso-ending p {
-    font-size: 21px;
-  }
-}
-</style>
+  </section>
+
+  <!-- LOCATION PAGE -->
+  <section id="location" class="content-view">
+    <div class="info-section">
+      <h2>LOCATION</h2>
+
+      <div class="location-info">
+        <p>소소 건축사사무소</p>
+        <p>서울시 구로구 디지털로27가길 17, 303호</p>
+        <p>
+          T: <a href="tel:0269537173">02-6953-7173</a>
+        </p>
+        <p>F: 02-6953-7174</p>
+        <p>
+          E: <a href="mailto:sosotelling@naver.com">
+          sosotelling@naver.com</a>
+        </p>
+      </div>
+    </div>
+  </section>
 
 </div>
 
-<!-- 하단 정보 -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-info">
     <span>서울시 구로구 디지털로27가길 17, 303호</span>
@@ -1245,7 +1186,7 @@ footer {
   </div>
 </footer>
 
-<!-- 프로젝트 상세 팝업 -->
+<!-- PROJECT MODAL -->
 <div class="modal" id="projectModal"
      role="dialog" aria-modal="true"
      aria-labelledby="modalTitle">
@@ -1264,7 +1205,8 @@ footer {
 </div>
 
 <script>
-/* 콘텐츠 전환 기능 */
+
+/* CONTENT NAVIGATION */
 const navLinks = document.querySelectorAll(".main-nav a");
 const contentViews = document.querySelectorAll(".content-view");
 
@@ -1273,6 +1215,9 @@ navLinks.forEach(link => {
     event.preventDefault();
 
     const targetId = link.dataset.view;
+    const targetView = document.getElementById(targetId);
+
+    if (!targetView) return;
 
     contentViews.forEach(view => {
       view.classList.remove("active");
@@ -1282,7 +1227,7 @@ navLinks.forEach(link => {
       nav.classList.remove("active");
     });
 
-    document.getElementById(targetId).classList.add("active");
+    targetView.classList.add("active");
     link.classList.add("active");
 
     if (targetId === "projects") {
@@ -1290,10 +1235,11 @@ navLinks.forEach(link => {
     }
 
     closeModal();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 });
 
-/* 프로젝트 페이지 기능 */
+/* PROJECT PAGINATION */
 const projects = Array.from(document.querySelectorAll(".project"));
 const pageSize = 12;
 let currentPage = 1;
@@ -1324,6 +1270,7 @@ function showPage(page) {
 prevButton.addEventListener("click", () => {
   if (currentPage > 1) {
     showPage(currentPage - 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 });
 
@@ -1332,12 +1279,13 @@ nextButton.addEventListener("click", () => {
 
   if (currentPage < totalPages) {
     showPage(currentPage + 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 });
 
 showPage(1);
 
-/* 프로젝트 상세 팝업 */
+/* PROJECT MODAL */
 const modal = document.getElementById("projectModal");
 const modalImage = document.getElementById("modalImage");
 const modalTitle = document.getElementById("modalTitle");
@@ -1375,6 +1323,7 @@ document.addEventListener("keydown", event => {
     closeModal();
   }
 });
+
 </script>
 
 </body>
