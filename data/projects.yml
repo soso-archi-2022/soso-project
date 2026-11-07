@@ -4,3 +4,7 @@
   images:
     - /images/20261107_183455.png
   description: 프로젝트 설명 입력
+- title: 테스트 프로젝트
+  category: 공공건축
+  thumbnail: /images/스크린샷 2026-11-07 175212.png
+  description: 홈페이지 연동 테스트
