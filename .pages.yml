@@ -43,12 +43,44 @@ content:
     path: data/soso.yml
     format: yaml
     fields:
-      - name: introduction
-        label: 사무소 소개
-        type: rich-text
-      - name: greeting
-        label: 대표 인사말
-        type: rich-text
+      - name: goal_direction
+        label: 목표와 방향
+        type: text
+      - name: principal
+        label: 대표 소개
+        type: text
+      - name: career
+        label: 주요 경력
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{year} - {detail}"
+        fields:
+          - name: year
+            label: 연도
+            type: string
+          - name: detail
+            label: 경력 내용
+            type: string
+      - name: activities
+        label: 주요 활동
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{year} - {detail}"
+        fields:
+          - name: year
+            label: 연도
+            type: string
+          - name: detail
+            label: 활동 내용
+            type: string
+      - name: other
+        label: 기타
+        type: text
+        description: 필요할 때 자유롭게 추가 설명을 입력하세요. 비워두면 홈페이지에 표시되지 않습니다.
       - name: location
         label: 주소
         type: text
