@@ -33,16 +33,16 @@ header{width:100%;height:125px;flex-shrink:0;display:flex;flex-direction:column;
 #soso,#location{max-width:1050px;margin:0 auto;padding:55px 45px 90px;border:0}
 #soso *{border-top:0!important;border-bottom:0!important}
 .soso-title,.location-title{font-size:25px;font-weight:400;letter-spacing:1px;color:#477653;margin-bottom:35px}
-.soso-intro{font-size:14px;line-height:2.1;color:#555;word-break:keep-all;white-space:pre-line;margin-bottom:65px}
 .soso-section{margin-bottom:65px}
 .soso-section-title{font-size:14px;font-weight:600;color:#477653;letter-spacing:1px;margin-bottom:22px}
-.soso-text{font-size:13px;line-height:2.1;color:#666;word-break:keep-all}
+.soso-text{font-size:13px;line-height:2.1;color:#666;word-break:keep-all;white-space:pre-line}
 .profile-name{font-size:21px;color:#333;font-weight:500;margin-bottom:6px}
 .profile-position{font-size:11px;color:#888;letter-spacing:1.5px;margin-bottom:25px}
 .profile-description{font-size:13px;line-height:2.1;color:#666;word-break:keep-all;white-space:pre-line}
-.profile-table{width:100%;margin-top:25px;border-collapse:collapse}
+.profile-table{width:100%;margin-top:5px;border-collapse:collapse}
 .profile-table td{padding:8px 0;font-size:12px;line-height:1.8;vertical-align:top;color:#666}
-.profile-table td:first-child{width:125px;color:#477653;font-weight:500}
+.profile-table td:first-child{width:150px;color:#477653;font-weight:500}
+#otherSection[hidden]{display:none}
 .location-title{margin-bottom:40px}
 .location-address{font-size:14px;color:#555;line-height:2;margin-bottom:30px;white-space:pre-line}
 .location-contact{font-size:12px;color:#777;line-height:2.2;letter-spacing:.3px}
@@ -67,8 +67,8 @@ footer{width:100%;padding:28px 20px 25px;text-align:center;flex-shrink:0;backgro
  .project-name{font-size:11px;margin-top:8px}
  #soso,#location{padding:40px 22px 65px}
  .soso-title,.location-title{font-size:22px}
- .soso-intro,.soso-text,.profile-description{font-size:12px}
- .profile-table td{font-size:11px}.profile-table td:first-child{width:95px}
+ .soso-text,.profile-description{font-size:12px}
+ .profile-table td{font-size:11px}.profile-table td:first-child{width:105px}
  footer{padding:22px 12px}.footer-contact{font-size:10px}
  .pagination{margin-top:40px}.modal{padding:15px}.modal-close{top:12px;right:18px}
 }
@@ -86,7 +86,6 @@ footer{width:100%;padding:28px 20px 25px;text-align:center;flex-shrink:0;backgro
   <a href="#location" data-view="location">LOCATION</a>
  </nav>
 </header>
-
 <main id="content-area">
  <section id="projects" class="content-view active">
   <div class="project-grid" id="projectGrid"></div>
@@ -96,61 +95,40 @@ footer{width:100%;padding:28px 20px 25px;text-align:center;flex-shrink:0;backgro
    <button id="nextBtn" type="button">NEXT</button>
   </div>
  </section>
-
  <section id="soso" class="content-view">
   <h1 class="soso-title">SOSO ARCHITECTS</h1>
-  <div class="soso-intro" id="sosoIntroduction">소소 건축사사무소는 작은것의 가치를 추구합니다.</div>
-  <div class="soso-section">
-   <h2 class="soso-section-title">DESIGN PHILOSOPHY</h2>
-   <div class="soso-text">
-    건축은 공간을 넘어 사람과 도시를 생각하는 일입니다.<br>
-    장소가 가진 맥락과 주변 환경을 읽고, 그 안에서 필요한 공공성과 지속가능성을 고민합니다.<br><br>
-    자연과 조화를 이루는 패시브 디자인, 재료의 물성과 구축 방식, 목구조와 시공의 합리성,
-    그리고 건축물의 유지관리까지 설계의 모든 과정에서 함께 생각합니다.<br><br>
-    소소는 좋은 건축이 거창한 형태에서 시작되는 것이 아니라,
-    일상에 대한 세심한 관찰과 작은 배려에서 시작된다고 믿습니다.
-   </div>
+
+  <div class="soso-section" id="goalSection">
+   <h2 class="soso-section-title">목표와 방향</h2>
+   <div class="soso-text" id="goalDirection"></div>
   </div>
-  <div class="soso-section">
-   <h2 class="soso-section-title">PRINCIPAL</h2>
+
+  <div class="soso-section" id="principalSection">
+   <h2 class="soso-section-title">대표 소개</h2>
    <div class="profile-name" id="principalName">대표 마순석</div>
    <div class="profile-position" id="principalPosition">Registered Architect</div>
-   <div class="profile-description" id="principalGreeting"></div>
+   <div class="profile-description" id="principalDescription"></div>
   </div>
-  <div class="soso-section">
-   <h2 class="soso-section-title">EDUCATION & LICENSE</h2>
-   <table class="profile-table">
-    <tr><td>2022</td><td>건축사 (KIRA)</td></tr>
-    <tr><td>2013</td><td>건축기사</td></tr>
-    <tr><td>2007</td><td>한양대학교 건축전문대학원 건축디자인 석사</td></tr>
-   </table>
+
+  <div class="soso-section" id="careerSection">
+   <h2 class="soso-section-title">주요 경력</h2>
+   <table class="profile-table"><tbody id="careerRows"></tbody></table>
   </div>
-  <div class="soso-section">
-   <h2 class="soso-section-title">ACTIVITIES</h2>
-   <table class="profile-table">
-    <tr><td>2023.03 ~</td><td>구로구 건축위원회 위원</td></tr>
-    <tr><td>2023.05 ~</td><td>한국산업인력공단 국가기술자격시험 건축분야 시험(채점)위원</td></tr>
-    <tr><td>2022.03 ~</td><td>그린리모델링 건축사</td></tr>
-    <tr><td>2022.01 ~</td><td>구로구·서울시 건축사회 및 대한건축사협회 정회원</td></tr>
-   </table>
+
+  <div class="soso-section" id="activitiesSection">
+   <h2 class="soso-section-title">주요 활동</h2>
+   <table class="profile-table"><tbody id="activityRows"></tbody></table>
   </div>
-  <div class="soso-section">
-   <h2 class="soso-section-title">CAREER</h2>
-   <table class="profile-table">
-    <tr><td>2022.01 ~ 현재</td><td>소소 건축사사무소</td></tr>
-    <tr><td>2019</td><td>(주)반</td></tr>
-    <tr><td>2014</td><td>(주)건축사사무소 에스파스</td></tr>
-    <tr><td>2012</td><td>(주)머릿돌에이스</td></tr>
-    <tr><td>2007</td><td>(주)엄앤드이</td></tr>
-    <tr><td>2006</td><td>(주)건원</td></tr>
-    <tr><td>2004</td><td>(주)아키플랜</td></tr>
-   </table>
+
+  <div class="soso-section" id="otherSection" hidden>
+   <h2 class="soso-section-title">기타</h2>
+   <div class="soso-text" id="otherText"></div>
   </div>
  </section>
 
  <section id="location" class="content-view">
   <h1 class="location-title">LOCATION</h1>
-  <div class="location-address" id="locationAddress">서울특별시 구로구</div>
+  <div class="location-address" id="locationAddress">서울시 구로구 디지털로27가길 17, 303호</div>
   <div class="location-contact">
    T. <a href="tel:0269537173">02-6953-7173</a><br>
    F. 02-6953-7174<br>
@@ -158,7 +136,6 @@ footer{width:100%;padding:28px 20px 25px;text-align:center;flex-shrink:0;backgro
   </div>
  </section>
 </main>
-
 <footer>
  <div class="footer-contact">
   서울시 구로구 디지털로27가길 17, 303호<br>
@@ -167,7 +144,6 @@ footer{width:100%;padding:28px 20px 25px;text-align:center;flex-shrink:0;backgro
  </div>
  <div class="footer-copyright">© 2026 SOSO ARCHITECTS. All Rights Reserved.</div>
 </footer>
-
 <div class="modal" id="projectModal">
  <button class="modal-close" id="modalClose" type="button">&times;</button>
  <div class="modal-content">
@@ -180,7 +156,6 @@ footer{width:100%;padding:28px 20px 25px;text-align:center;flex-shrink:0;backgro
   </div>
  </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
 <script>
 const itemsPerPage = 12;
@@ -201,7 +176,25 @@ const modalCount = document.getElementById("modalCount");
 function safeText(value) {
  return value == null ? "" : String(value);
 }
-
+function setSectionVisibility(id, hasContent) {
+ const section = document.getElementById(id);
+ section.hidden = !hasContent;
+}
+function renderRows(targetId, rows) {
+ const target = document.getElementById(targetId);
+ target.innerHTML = "";
+ if (!Array.isArray(rows)) return;
+ rows.forEach(row => {
+  if (!row || (!safeText(row.year).trim() && !safeText(row.detail).trim())) return;
+  const tr = document.createElement("tr");
+  const year = document.createElement("td");
+  const detail = document.createElement("td");
+  year.textContent = safeText(row.year);
+  detail.textContent = safeText(row.detail);
+  tr.append(year, detail);
+  target.appendChild(tr);
+ });
+}
 function renderPage(page) {
  const totalPages = Math.max(1, Math.ceil(projects.length / itemsPerPage));
  currentPage = Math.min(Math.max(1, page), totalPages);
@@ -212,7 +205,6 @@ function renderPage(page) {
  pageProjects.forEach(project => {
   const item = document.createElement("div");
   item.className = "project-item";
-
   const imageWrap = document.createElement("div");
   imageWrap.className = "project-image";
   const image = document.createElement("img");
@@ -224,7 +216,6 @@ function renderPage(page) {
   const name = document.createElement("div");
   name.className = "project-name";
   name.textContent = safeText(project.title);
-
   item.append(imageWrap, name);
   if (project.category) {
    const category = document.createElement("div");
@@ -235,19 +226,16 @@ function renderPage(page) {
   item.addEventListener("click", () => openModal(project));
   projectGrid.appendChild(item);
  });
-
  pageNumber.textContent = String(currentPage).padStart(2, "0") + " / " + String(totalPages).padStart(2, "0");
  prevBtn.disabled = currentPage === 1;
  nextBtn.disabled = currentPage === totalPages;
 }
-
 async function loadProjects() {
  try {
   const response = await fetch("/data/projects.yml", {cache:"no-store"});
   if (!response.ok) throw new Error("projects.yml을 불러오지 못했습니다.");
-  const yamlText = await response.text();
-  const parsed = jsyaml.load(yamlText);
-  projects = Array.isArray(parsed) ? parsed : [];
+  projects = jsyaml.load(await response.text()) || [];
+  if (!Array.isArray(projects)) projects = [];
   renderPage(1);
  } catch (error) {
   projectGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#888;font-size:13px;padding:40px 0">프로젝트 데이터를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.</p>';
@@ -257,29 +245,41 @@ async function loadProjects() {
   console.error(error);
  }
 }
-
 async function loadSoso() {
  try {
   const response = await fetch("/data/soso.yml", {cache:"no-store"});
   if (!response.ok) throw new Error("soso.yml을 불러오지 못했습니다.");
   const data = jsyaml.load(await response.text()) || {};
 
-  document.getElementById("sosoIntroduction").textContent = safeText(data.introduction);
+  const goal = safeText(data.goal_direction).trim();
+  document.getElementById("goalDirection").textContent = goal;
+  setSectionVisibility("goalSection", !!goal);
 
-  const greeting = safeText(data.greeting).trim();
-  const lines = greeting.split(/\r?\n/);
-  const heading = (lines.shift() || "대표 마순석 | Registered Architect").trim();
-  const remaining = lines.join("\n").trim();
-  const separator = heading.split("|");
-  document.getElementById("principalName").textContent = (separator[0] || "대표 마순석").trim();
-  document.getElementById("principalPosition").textContent = (separator[1] || "Registered Architect").trim();
-  document.getElementById("principalGreeting").textContent = remaining;
+  const principal = safeText(data.principal).trim();
+  const principalLines = principal.split(/\r?\n/);
+  const heading = (principalLines.shift() || "대표 마순석 | Registered Architect").trim();
+  const description = principalLines.join("\n").trim();
+  const parts = heading.split("|");
+  document.getElementById("principalName").textContent = (parts[0] || "대표 마순석").trim();
+  document.getElementById("principalPosition").textContent = (parts[1] || "Registered Architect").trim();
+  document.getElementById("principalDescription").textContent = description;
+  setSectionVisibility("principalSection", !!principal);
+
+  renderRows("careerRows", data.career);
+  setSectionVisibility("careerSection", Array.isArray(data.career) && data.career.length > 0);
+
+  renderRows("activityRows", data.activities);
+  setSectionVisibility("activitiesSection", Array.isArray(data.activities) && data.activities.length > 0);
+
+  const other = safeText(data.other).trim();
+  document.getElementById("otherText").textContent = other;
+  setSectionVisibility("otherSection", !!other);
+
   document.getElementById("locationAddress").textContent = safeText(data.location);
  } catch (error) {
   console.error(error);
  }
 }
-
 function openModal(project) {
  activeProject = project;
  activeImageIndex = 0;
@@ -288,7 +288,6 @@ function openModal(project) {
  showModalImage();
  modal.classList.add("active");
 }
-
 function showModalImage() {
  if (!activeProject) return;
  const gallery = Array.isArray(activeProject.images) && activeProject.images.length ? activeProject.images : [activeProject.thumbnail].filter(Boolean);
@@ -302,13 +301,11 @@ function showModalImage() {
  document.getElementById("modalPrev").disabled = gallery.length < 2;
  document.getElementById("modalNext").disabled = gallery.length < 2;
 }
-
 function closeModal() {
  modal.classList.remove("active");
  modalImage.src = "";
  activeProject = null;
 }
-
 prevBtn.addEventListener("click", () => { if (currentPage > 1) { renderPage(currentPage - 1); window.scrollTo({top:0,behavior:"smooth"}); } });
 nextBtn.addEventListener("click", () => { const total = Math.ceil(projects.length / itemsPerPage); if (currentPage < total) { renderPage(currentPage + 1); window.scrollTo({top:0,behavior:"smooth"}); } });
 document.getElementById("modalPrev").addEventListener("click", () => { activeImageIndex--; showModalImage(); });
@@ -320,7 +317,6 @@ document.addEventListener("keydown", event => { if (event.key === "Escape") clos
 const navLinks = document.querySelectorAll(".main-nav a");
 const logoLink = document.querySelector(".logo");
 const contentViews = document.querySelectorAll(".content-view");
-
 function changeView(targetId, clickedLink) {
  const targetView = document.getElementById(targetId);
  if (!targetView) return;
@@ -343,7 +339,6 @@ logoLink.addEventListener("click", event => {
  changeView("projects", null);
  renderPage(1);
 });
-
 (async function initialize() {
  if (typeof jsyaml === "undefined") {
   projectGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#888;padding:40px 0">데이터 처리 도구를 불러오지 못했습니다. 페이지를 새로고침해 주세요.</p>';
