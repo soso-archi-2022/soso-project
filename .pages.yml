@@ -20,7 +20,7 @@ content:
         type: string
       - name: category
         label: 프로젝트 구분
-        type: select
+        type: selec
         options:
           values:
             - 공공건축
