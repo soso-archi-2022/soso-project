@@ -1,0 +1,54 @@
+media:
+  input: images
+  output: /images
+  extensions:
+    - jpg
+    - jpeg
+    - png
+    - webp
+
+content:
+  - name: projects
+    label: 프로젝트 관리
+    type: file
+    path: data/projects.yml
+    format: yaml
+    list: true
+    fields:
+      - name: title
+        label: 프로젝트명
+        type: string
+      - name: category
+        label: 프로젝트 구분
+        type: select
+        options:
+          values:
+            - 공공건축
+            - 일반건축
+            - 용도변경
+      - name: thumbnail
+        label: 썸네일 이미지
+        type: image
+      - name: images
+        label: 상세 이미지
+        type: image
+        list: true
+      - name: description
+        label: 프로젝트 설명
+        type: text
+
+  - name: soso
+    label: 사무소 소개
+    type: file
+    path: data/soso.yml
+    format: yaml
+    fields:
+      - name: introduction
+        label: 사무소 소개
+        type: rich-text
+      - name: greeting
+        label: 대표 인사말
+        type: rich-text
+      - name: location
+        label: 주소
+        type: text
