@@ -10,11 +10,15 @@
   images:
     - /images/20231020_140552-1.png
   description: 홈페이지 연동 테스트
-- title: 2023_일반공모_임진강 주상절리 관광센터 건립공사
+- title: 2023_일반공모_임진강 주상절리 관광센터 건립공사_4등
   category: 공공건축
   thumbnail: /images/임진강주상절리.png
   images:
     - /images/임진강주상절리-1.png
   description: 홈페이지 연동 테스트
-- category: 공공건축
+- title: 2023_일반공모_국립낙동강생물자원관 방문자센터 건립공사_4등
+  category: 공공건축
+  thumbnail: /images/낙동강_방문자센터_2.png
+  images:
+    - /images/낙동강_방문자센터_2-1.png
 - category: 공공건축
