@@ -59,7 +59,8 @@
   description: 홈페이지 연동 테스트
 - category: 공공건축
   description: 홈페이지 연동 테스트
-- category: 공공건축
+- title: 2026_일반공모_당진시 석문면 행정복지센터_참여작
+  category: 공공건축
   thumbnail: /images/석문면행정복지센터 조감도_1.jpg
   images:
     - /images/석문면행정복지센터 조감도_1-1.jpg
