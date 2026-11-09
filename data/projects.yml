@@ -1,8 +1,8 @@
-- title: 2026_일반공모_석문면 행정복지센터
+- title: 2022_일반공모_담헌천문 달빛마당 건립사업_2등
   category: 공공건축
-  thumbnail: /images/20261107_183455.png
+  thumbnail: /images/담헌천문_달빛마당_입면도.jpg
   images:
-    - /images/20261107_183455.png
+    - /images/담헌천문_달빛마당_입면도-1.jpg
   description: 프로젝트 설명 입력
 - title: 2026_일반공모_프로젝트
   category: 공공건축
@@ -14,3 +14,5 @@
   category: 공공건축
   thumbnail: /images/스크린샷 2026-11-07 175535.png
   description: 홈페이지 연동 테스트
+- category: 공공건축
+- category: 공공건축
