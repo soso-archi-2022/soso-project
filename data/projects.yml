@@ -29,10 +29,12 @@
     - /images/따뜻한_벽돌의_현대_건축과_거리_풍경.png
   description: 홈페이지 연동 테스트
 - title: 2024_일반공모_수원시 금곡동 공공도서관_참여작
+  category: 공공건축
   thumbnail: /images/금곡동 공공도서관.jpg
   images:
     - /images/금곡동 공공도서관-1.jpg
   description: 홈페이지 연동 테스트
 - title: "2024"
+  category: 일반건축
   description: 홈페이지 연동 테스트
 - description: 홈페이지 연동 테스트
