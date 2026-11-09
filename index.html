@@ -728,136 +728,64 @@ async function loadProjects() {
  위치 | location
 */
 
+
 async function loadSoso() {
  try {
-  const response = await fetch("/data/soso.yml", {cache:"no-store"});
+  const response = await fetch("/data/soso.yml", {
+   cache: "no-store"
+  });
 
   if (!response.ok) {
    throw new Error("soso.yml을 불러오지 못했습니다.");
   }
 
   const raw = await response.text();
-  const lines = raw.split(/\r?\n/);
 
-  const data = {
-   goal_direction: [],
-   principal: [],
-   career: [],
-   activities: [],
-   other: [],
-   location: []
-  };
-
-  const keyMap = {
-   "goal_direction": "goal_direction",
-   "principal": "principal",
-   "registered architect": "principal",
-   "career": "career",
-   "activities": "activities",
-   "other": "other",
-   "location": "location"
-  };
-
-  let currentKey = null;
-  let currentItem = null;
-
-  lines.forEach(line => {
-   const trimmed = line.trim();
-
-   /* 항목 제목과 키 찾기 */
-   const sectionMatch = trimmed.match(/^([^|]+?)\s*\|\s*(.*?)\s*$/);
-
-   if (sectionMatch) {
-    const rightSide = sectionMatch[2].trim().toLowerCase();
-
-    if (keyMap[rightSide]) {
-     currentKey = keyMap[rightSide];
-     currentItem = null;
-     return;
-    }
-   }
-
-   if (!currentKey) return;
-
-   /* 경력 및 활동 데이터 */
-   if (currentKey === "career" || currentKey === "activities") {
-    const yearMatch = trimmed.match(/^-\s*year:\s*(.*?)\s*$/);
-
-    if (yearMatch) {
-     let year = yearMatch[1].trim();
-     year = year.replace(/^["']|["']$/g, "");
-
-     currentItem = {
-      year: year,
-      detail: ""
-     };
-
-     data[currentKey].push(currentItem);
-     return;
-    }
-
-    const detailMatch = trimmed.match(/^detail:\s*(.*?)\s*$/);
-
-    if (detailMatch && currentItem) {
-     let detail = detailMatch[1].trim();
-     detail = detail.replace(/^["']|["']$/g, "");
-     currentItem.detail = detail;
-    }
-
-    return;
-   }
-
-   /* 일반 텍스트 데이터 */
-   if (
-    currentKey === "goal_direction" ||
-    currentKey === "principal" ||
-    currentKey === "other" ||
-    currentKey === "location"
-   ) {
-    data[currentKey].push(line.replace(/^\s{0,2}/, ""));
-   }
-  });
-
-  function getText(key) {
-   return data[key].join("\n").trim();
-  }
+  /* 표준 YAML 데이터 읽기 */
+  const data = jsyaml.load(raw) || {};
 
   /* 목표와 방향 */
-  const goal = getText("goal_direction");
+  const goal = data.goal_direction || "";
 
   document.getElementById("goalDirection").textContent = goal;
-  setSectionVisibility("goalSection", !!goal);
+  setSectionVisibility("goalSection", !!goal.trim());
 
-  /* 대표 소개: 이름과 직함은 표시하지 않고 본문만 출력 */
-  const principal = getText("principal");
+  /* 대표 소개 */
+  const principal = data.principal || "";
 
   document.getElementById("principalDescription").textContent = principal;
-  setSectionVisibility("principalSection", !!principal);
+  setSectionVisibility("principalSection", !!principal.trim());
 
   /* 주요 경력 */
-  renderRows("careerRows", data.career);
+  const career = Array.isArray(data.career) ? data.career : [];
+
+  renderRows("careerRows", career);
 
   setSectionVisibility(
    "careerSection",
-   data.career.length > 0
+   career.length > 0
   );
 
   /* 주요 활동 */
-  renderRows("activityRows", data.activities);
+  const activities = Array.isArray(data.activities)
+   ? data.activities
+   : [];
+
+  renderRows("activityRows", activities);
 
   setSectionVisibility(
    "activitiesSection",
-   data.activities.length > 0
+   activities.length > 0
   );
 
   /* 기타 */
-  const other = getText("other");
+  const other = data.other || "";
 
   document.getElementById("otherText").textContent = other;
-  setSectionVisibility("otherSection", !!other);
+  setSectionVisibility("otherSection", !!other.trim());
 
   /* 위치 */
-  const location = getText("location");
+  const location = data.location || "";
 
   document.getElementById("locationAddress").textContent = location;
 
@@ -865,6 +793,7 @@ async function loadSoso() {
   console.error("SOSO 데이터 오류:", error);
  }
 }
+
 
 /* 프로젝트 상세 모달 */
 function openModal(project) {
