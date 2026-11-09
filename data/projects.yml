@@ -45,10 +45,11 @@
   images:
     - /images/봉산면 행정복지센터_1-1.png
   description: 홈페이지 연동 테스트
-- title: "2025"
+- title: 2025_일반공모_행정복지센터_참여작
   category: 공공건축
   thumbnail: /images/수원 메탄1동 행정복지센터 ai 이미지생성.png
   images:
     - /images/수원 메탄1동 행정복지센터 ai 이미지생성-1.png
   description: 홈페이지 연동 테스트
 - category: 공공건축
+  description: 홈페이지 연동 테스트
