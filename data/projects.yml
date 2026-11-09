@@ -10,9 +10,11 @@
   images:
     - /images/20231020_140552-1.png
   description: 홈페이지 연동 테스트
-- title: 2024 프로젝트
+- title: 2023_일반공모_임진강 주상절리 관광센터 건립공사
   category: 공공건축
-  thumbnail: /images/스크린샷 2026-11-07 175535.png
+  thumbnail: /images/임진강주상절리.png
+  images:
+    - /images/임진강주상절리-1.png
   description: 홈페이지 연동 테스트
 - category: 공공건축
 - category: 공공건축
