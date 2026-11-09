@@ -47,4 +47,8 @@
   description: 홈페이지 연동 테스트
 - title: "2025"
   category: 공공건축
+  thumbnail: /images/수원 메탄1동 행정복지센터 ai 이미지생성.png
+  images:
+    - /images/수원 메탄1동 행정복지센터 ai 이미지생성-1.png
   description: 홈페이지 연동 테스트
+- category: 공공건축
