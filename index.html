@@ -1,107 +1,493 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SOSO ARCHITECTS | 소소 건축사사무소</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html{overflow-y:scroll;scrollbar-gutter:stable;scroll-behavior:auto}
-body{font-family:Arial,"Noto Sans KR",sans-serif;color:#333;background:#fff;min-height:100vh;display:flex;flex-direction:column}
-header{width:100%;height:125px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;position:relative;z-index:10}
-.logo{display:block;width:max-content;margin:0 auto;text-align:center;color:#477653;text-decoration:none;line-height:1.2}
-.logo-korean{font-size:25px;font-weight:600;letter-spacing:2px}
-.logo-english{margin-top:5px;font-size:15.6px;font-weight:400;letter-spacing:5px}
-.main-nav{width:100%;display:flex;justify-content:center;align-items:center;gap:42px;margin-top:23px}
-.main-nav a{text-decoration:none;color:#777;font-size:12px;letter-spacing:2px;transition:color .2s}
-.main-nav a:hover,.main-nav a.active{color:#477653}
-#content-area{flex:1;width:100%;min-height:480px}
-.content-view{display:none}.content-view.active{display:block}
-#projects{max-width:1400px;margin:0 auto;padding:35px 45px 65px}
-.project-grid{display:grid;grid-template-columns:repeat(4,1fr);column-gap:22px;row-gap:35px}
-.project-item{cursor:pointer;min-width:0}
-.project-image{width:100%;aspect-ratio:4/3;overflow:hidden;background:#f3f3f3}
-.project-image img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .5s ease}
-.project-item:hover .project-image img{transform:scale(1.035)}
-.project-name{margin-top:11px;font-size:12px;line-height:1.5;color:#555;letter-spacing:.2px}
-.project-category{font-size:10px;color:#999;margin-top:3px}
-.pagination{display:flex;justify-content:center;align-items:center;gap:30px;margin-top:55px}
-.pagination button{border:0;background:none;color:#777;font-size:11px;letter-spacing:1.5px;cursor:pointer;padding:8px}
-.pagination button:hover:not(:disabled){color:#477653}
-.pagination button:disabled{color:#ccc;cursor:default}
-.page-number{font-size:11px;color:#777;letter-spacing:2px}
-#soso,#location{max-width:1050px;margin:0 auto;padding:55px 45px 90px;border:0}
-#soso *{border-top:0!important;border-bottom:0!important}
-.soso-title,.location-title{font-size:25px;font-weight:400;letter-spacing:1px;color:#477653;margin-bottom:35px}
-.soso-section{margin-bottom:65px}
-.soso-section-title{font-size:14px;font-weight:600;color:#477653;letter-spacing:1px;margin-bottom:22px}
-.soso-text{font-size:13px;line-height:2.1;color:#666;word-break:keep-all;white-space:pre-line}
-.profile-name{font-size:21px;color:#333;font-weight:500;margin-bottom:6px}
-.profile-position{font-size:11px;color:#888;letter-spacing:1.5px;margin-bottom:25px}
-.profile-description{font-size:13px;line-height:2.1;color:#666;word-break:keep-all;white-space:pre-line}
-.profile-table{width:100%;margin-top:5px;border-collapse:collapse}
-.profile-table td{padding:3px 0;font-size:12px;line-height:1.8;vertical-align:top;color:#666}
-.profile-table td:first-child{width:150px;color:#477653;font-weight:500}
-#otherSection[hidden]{display:none}
-.location-title{margin-bottom:40px}
-.location-address{font-size:14px;color:#555;line-height:2;margin-bottom:30px;white-space:pre-line}
-.location-contact{font-size:12px;color:#777;line-height:2.2;letter-spacing:.3px}
-.location-contact a{color:inherit;text-decoration:none}.location-contact a:hover{color:#477653}
-footer{width:100%;:28px 20px 25px;text-align:center;flex-shrink:0;background:#fff}
-.footer-contact{font-size:11px;line-height:1.9;color:#888;letter-spacing:.2px}
-.footer-contact a{color:inherit;text-decoration:none}
-.footer-copyright{margin-top:12px;font-size:9px;color:#aaa;letter-spacing:.5px}
-.modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.9);align-items:center;justify-content:center;:30px}
-.modal.active{display:flex}
-.modal-content{width:100%;max-width:1100px;max-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.modal-content img{max-width:100%;max-height:76vh;object-fit:contain}
-.modal-caption{color:#fff;font-size:12px;margin-top:14px;letter-spacing:1px;text-align:center;white-space:pre-line;line-height:1.8}
-.modal-controls{display:flex;align-items:center;gap:28px;margin-top:12px;color:#fff;font-size:12px}
-.modal-controls button{border:0;background:none;color:#fff;font-size:22px;cursor:pointer;:3px 10px}
-.modal-close{position:absolute;top:25px;right:35px;border:0;background:none;color:#fff;font-size:32px;font-weight:200;cursor:pointer}
-@media(max-width:900px){.project-grid{grid-template-columns:repeat(3,1fr);gap:25px 16px}#projects{-left:25px;-right:25px}}
-@media(max-width:600px){
- header{height:115px}.logo-korean{font-size:22px}.logo-english{font-size:13.2px}
- .main-nav{gap:30px;margin-top:20px}.main-nav a{font-size:11px}
- #projects{:25px 16px 50px}.project-grid{grid-template-columns:repeat(2,1fr);column-gap:12px;row-gap:25px}
- .project-name{font-size:11px;margin-top:8px}
- #soso,#location{:40px 22px 65px}
- .soso-title,.location-title{font-size:22px}
- .soso-text,.profile-description{font-size:12px}
- .profile-table td{font-size:11px}.profile-table td:first-child{width:105px}
- footer{:22px 12px}.footer-contact{font-size:10px}
- .pagination{margin-top:40px}.modal{:15px}.modal-close{top:12px;right:18px}
+
+html{
+ overflow-y:scroll;
+ scrollbar-gutter:stable;
+ scroll-behavior:auto;
 }
+
+body{
+ font-family:Arial,"Noto Sans KR",sans-serif;
+ color:#333;
+ background:#fff;
+ min-height:100vh;
+ display:flex;
+ flex-direction:column;
+}
+
+header{
+ width:100%;
+ height:125px;
+ flex-shrink:0;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ background:#fff;
+ position:relative;
+ z-index:10;
+}
+
+.logo{
+ display:block;
+ width:max-content;
+ margin:0 auto;
+ text-align:center;
+ color:#477653;
+ text-decoration:none;
+ line-height:1.2;
+}
+
+.logo-korean{
+ font-size:25px;
+ font-weight:600;
+ letter-spacing:2px;
+}
+
+.logo-english{
+ margin-top:5px;
+ font-size:15.6px;
+ font-weight:400;
+ letter-spacing:5px;
+}
+
+.main-nav{
+ width:100%;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:42px;
+ margin-top:23px;
+}
+
+.main-nav a{
+ text-decoration:none;
+ color:#777;
+ font-size:12px;
+ letter-spacing:2px;
+ transition:color .2s;
+}
+
+.main-nav a:hover,
+.main-nav a.active{
+ color:#477653;
+}
+
 .nav-divider{
-  color:#bbb;
-  font-size:12px;
-  margin:0 -25px;
+ color:#bbb;
+ font-size:12px;
+ margin:0 -25px;
+}
+
+#content-area{
+ flex:1;
+ width:100%;
+ min-height:480px;
+}
+
+.content-view{display:none}
+.content-view.active{display:block}
+
+#projects{
+ max-width:1400px;
+ margin:0 auto;
+ padding:35px 45px 65px;
+}
+
+.project-grid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ column-gap:22px;
+ row-gap:35px;
+}
+
+.project-item{
+ cursor:pointer;
+ min-width:0;
+}
+
+.project-image{
+ width:100%;
+ aspect-ratio:4/3;
+ overflow:hidden;
+ background:#f3f3f3;
+}
+
+.project-image img{
+ width:100%;
+ height:100%;
+ display:block;
+ object-fit:cover;
+ transition:transform .5s ease;
+}
+
+.project-item:hover .project-image img{
+ transform:scale(1.035);
+}
+
+.project-name{
+ margin-top:11px;
+ font-size:12px;
+ line-height:1.5;
+ color:#555;
+ letter-spacing:.2px;
+}
+
+.project-category{
+ font-size:10px;
+ color:#999;
+ margin-top:3px;
+}
+
+.pagination{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:30px;
+ margin-top:55px;
+}
+
+.pagination button{
+ border:0;
+ background:none;
+ color:#777;
+ font-size:11px;
+ letter-spacing:1.5px;
+ cursor:pointer;
+ padding:8px;
+}
+
+.pagination button:hover:not(:disabled){
+ color:#477653;
+}
+
+.pagination button:disabled{
+ color:#ccc;
+ cursor:default;
+}
+
+.page-number{
+ font-size:11px;
+ color:#777;
+ letter-spacing:2px;
+}
+
+#soso,
+#location{
+ max-width:1050px;
+ margin:0 auto;
+ padding:55px 45px 90px;
+ border:0;
+}
+
+#soso *{
+ border-top:0!important;
+ border-bottom:0!important;
+}
+
+.soso-section{
+ margin-bottom:65px;
+}
+
+.soso-section-title{
+ font-size:14px;
+ font-weight:600;
+ color:#477653;
+ letter-spacing:1px;
+ margin-bottom:22px;
+}
+
+.soso-text{
+ font-size:13px;
+ line-height:2.1;
+ color:#666;
+ word-break:keep-all;
+ white-space:pre-line;
+}
+
+.profile-name{
+ font-size:21px;
+ color:#333;
+ font-weight:500;
+ margin-bottom:6px;
+}
+
+.profile-position{
+ font-size:11px;
+ color:#888;
+ letter-spacing:1.5px;
+ margin-bottom:25px;
+}
+
+.profile-description{
+ font-size:13px;
+ line-height:2.1;
+ color:#666;
+ word-break:keep-all;
+ white-space:pre-line;
+}
+
+.profile-table{
+ width:100%;
+ margin-top:5px;
+ border-collapse:collapse;
+}
+
+.profile-table td{
+ padding:3px 0;
+ font-size:12px;
+ line-height:1.8;
+ vertical-align:top;
+ color:#666;
+}
+
+.profile-table td:first-child{
+ width:150px;
+ color:#477653;
+ font-weight:500;
+}
+
+#otherSection[hidden],
+.soso-section[hidden]{
+ display:none!important;
+}
+
+.location-title{
+ font-size:25px;
+ font-weight:400;
+ letter-spacing:1px;
+ color:#477653;
+ margin-bottom:40px;
+}
+
+.location-address{
+ font-size:14px;
+ color:#555;
+ line-height:2;
+ margin-bottom:30px;
+ white-space:pre-line;
+}
+
+.location-contact{
+ font-size:12px;
+ color:#777;
+ line-height:2.2;
+ letter-spacing:.3px;
+}
+
+.location-contact a{
+ color:inherit;
+ text-decoration:none;
+}
+
+.location-contact a:hover{
+ color:#477653;
+}
+
+footer{
+ width:100%;
+ padding:28px 20px 25px;
+ text-align:center;
+ flex-shrink:0;
+ background:#fff;
+}
+
+.footer-contact{
+ font-size:11px;
+ line-height:1.9;
+ color:#888;
+ letter-spacing:.2px;
+}
+
+.footer-contact a{
+ color:inherit;
+ text-decoration:none;
+}
+
+.footer-copyright{
+ margin-top:12px;
+ font-size:9px;
+ color:#aaa;
+ letter-spacing:.5px;
+}
+
+.modal{
+ display:none;
+ position:fixed;
+ inset:0;
+ z-index:1000;
+ background:rgba(0,0,0,.9);
+ align-items:center;
+ justify-content:center;
+ padding:30px;
+}
+
+.modal.active{
+ display:flex;
+}
+
+.modal-content{
+ width:100%;
+ max-width:1100px;
+ max-height:90vh;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+}
+
+.modal-content img{
+ max-width:100%;
+ max-height:76vh;
+ object-fit:contain;
+}
+
+.modal-caption{
+ color:#fff;
+ font-size:12px;
+ margin-top:14px;
+ letter-spacing:1px;
+ text-align:center;
+ white-space:pre-line;
+ line-height:1.8;
+}
+
+.modal-controls{
+ display:flex;
+ align-items:center;
+ gap:28px;
+ margin-top:12px;
+ color:#fff;
+ font-size:12px;
+}
+
+.modal-controls button{
+ border:0;
+ background:none;
+ color:#fff;
+ font-size:22px;
+ cursor:pointer;
+ padding:3px 10px;
+}
+
+.modal-close{
+ position:absolute;
+ top:25px;
+ right:35px;
+ border:0;
+ background:none;
+ color:#fff;
+ font-size:32px;
+ font-weight:200;
+ cursor:pointer;
+}
+
+@media(max-width:900px){
+ .project-grid{
+  grid-template-columns:repeat(3,1fr);
+  gap:25px 16px;
+ }
+
+ #projects{
+  padding-left:25px;
+  padding-right:25px;
+ }
+}
+
+@media(max-width:600px){
+ header{height:115px}
+
+ .logo-korean{font-size:22px}
+ .logo-english{font-size:13.2px}
+
+ .main-nav{
+  gap:30px;
+  margin-top:20px;
+ }
+
+ .main-nav a{font-size:11px}
+
+ #projects{
+  padding:25px 16px 50px;
+ }
+
+ .project-grid{
+  grid-template-columns:repeat(2,1fr);
+  column-gap:12px;
+  row-gap:25px;
+ }
+
+ .project-name{
+  font-size:11px;
+  margin-top:8px;
+ }
+
+ #soso,
+ #location{
+  padding:40px 22px 65px;
+ }
+
+ .soso-section{margin-bottom:50px}
+
+ .soso-title,
+ .location-title{font-size:22px}
+
+ .soso-text,
+ .profile-description{font-size:12px}
+
+ .profile-table td{font-size:11px}
+ .profile-table td:first-child{width:105px}
+
+ footer{padding:22px 12px}
+
+ .footer-contact{font-size:10px}
+
+ .pagination{margin-top:40px}
+
+ .modal{padding:15px}
+ .modal-close{top:12px;right:18px}
 }
 </style>
 </head>
+
 <body>
+
 <header>
  <a href="#" class="logo" data-view="projects">
   <div class="logo-korean">소소 건축사사무소</div>
   <div class="logo-english">SOSO ARCHITECTS</div>
  </a>
-<nav class="main-nav">
+
+ <nav class="main-nav">
   <a href="#projects" data-view="projects" class="active">PROJECT</a>
   <span class="nav-divider">|</span>
   <a href="#soso" data-view="soso">SOSO</a>
   <span class="nav-divider">|</span>
   <a href="#location" data-view="location">LOCATION</a>
-</nav>
+ </nav>
 </header>
+
 <main id="content-area">
+
  <section id="projects" class="content-view active">
   <div class="project-grid" id="projectGrid"></div>
+
   <div class="pagination">
    <button id="prevBtn" type="button">PREV</button>
    <span class="page-number" id="pageNumber">01 / 01</span>
    <button id="nextBtn" type="button">NEXT</button>
   </div>
  </section>
+
  <section id="soso" class="content-view">
 
   <div class="soso-section" id="goalSection">
@@ -118,43 +504,61 @@ footer{width:100%;:28px 20px 25px;text-align:center;flex-shrink:0;background:#ff
 
   <div class="soso-section" id="careerSection">
    <h2 class="soso-section-title">주요 경력</h2>
-   <table class="profile-table"><tbody id="careerRows"></tbody></table>
+   <table class="profile-table">
+    <tbody id="careerRows"></tbody>
+   </table>
   </div>
 
   <div class="soso-section" id="activitiesSection">
    <h2 class="soso-section-title">주요 활동</h2>
-   <table class="profile-table"><tbody id="activityRows"></tbody></table>
+   <table class="profile-table">
+    <tbody id="activityRows"></tbody>
+   </table>
   </div>
 
   <div class="soso-section" id="otherSection" hidden>
    <h2 class="soso-section-title">기타</h2>
    <div class="soso-text" id="otherText"></div>
   </div>
+
  </section>
 
  <section id="location" class="content-view">
   <h1 class="location-title">LOCATION</h1>
-  <div class="location-address" id="locationAddress">서울시 구로구 디지털로27가길 17, 303호</div>
+
+  <div class="location-address" id="locationAddress">
+   서울시 구로구 디지털로27가길 17, 303호
+  </div>
+
   <div class="location-contact">
    T. <a href="tel:0269537173">02-6953-7173</a><br>
    F. 02-6953-7174<br>
    E. <a href="mailto:sosotelling@naver.com">sosotelling@naver.com</a>
   </div>
  </section>
+
 </main>
+
 <footer>
  <div class="footer-contact">
   서울시 구로구 디지털로27가길 17, 303호<br>
   T. 02-6953-7173 &nbsp; | &nbsp; F. 02-6953-7174<br>
   E. sosotelling@naver.com
  </div>
- <div class="footer-copyright">© 2026 SOSO ARCHITECTS. All Rights Reserved.</div>
+
+ <div class="footer-copyright">
+  © 2026 SOSO ARCHITECTS. All Rights Reserved.
+ </div>
 </footer>
+
 <div class="modal" id="projectModal">
  <button class="modal-close" id="modalClose" type="button">&times;</button>
+
  <div class="modal-content">
   <img id="modalImage" src="" alt="Project image">
+
   <div class="modal-caption" id="modalCaption"></div>
+
   <div class="modal-controls">
    <button id="modalPrev" type="button" aria-label="이전 이미지">‹</button>
    <span id="modalCount"></span>
@@ -162,9 +566,12 @@ footer{width:100%;:28px 20px 25px;text-align:center;flex-shrink:0;background:#ff
   </div>
  </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+
 <script>
 const itemsPerPage = 12;
+
 let projects = [];
 let currentPage = 1;
 let activeProject = null;
@@ -174,6 +581,7 @@ const projectGrid = document.getElementById("projectGrid");
 const pageNumber = document.getElementById("pageNumber");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
+
 const modal = document.getElementById("projectModal");
 const modalImage = document.getElementById("modalImage");
 const modalCaption = document.getElementById("modalCaption");
@@ -182,176 +590,406 @@ const modalCount = document.getElementById("modalCount");
 function safeText(value) {
  return value == null ? "" : String(value);
 }
+
 function setSectionVisibility(id, hasContent) {
  const section = document.getElementById(id);
- section.hidden = !hasContent;
+ if (section) section.hidden = !hasContent;
 }
+
+/* 경력 및 활동 목록 출력 */
 function renderRows(targetId, rows) {
  const target = document.getElementById(targetId);
  target.innerHTML = "";
+
  if (!Array.isArray(rows)) return;
+
  rows.forEach(row => {
   if (!row || (!safeText(row.year).trim() && !safeText(row.detail).trim())) return;
+
   const tr = document.createElement("tr");
   const year = document.createElement("td");
   const detail = document.createElement("td");
+
   year.textContent = safeText(row.year);
   detail.textContent = safeText(row.detail);
+
   tr.append(year, detail);
   target.appendChild(tr);
  });
 }
+
+/* 프로젝트 페이지 출력 */
 function renderPage(page) {
  const totalPages = Math.max(1, Math.ceil(projects.length / itemsPerPage));
+
  currentPage = Math.min(Math.max(1, page), totalPages);
+
  const start = (currentPage - 1) * itemsPerPage;
  const pageProjects = projects.slice(start, start + itemsPerPage);
+
  projectGrid.innerHTML = "";
 
  pageProjects.forEach(project => {
   const item = document.createElement("div");
   item.className = "project-item";
+
   const imageWrap = document.createElement("div");
   imageWrap.className = "project-image";
+
   const image = document.createElement("img");
   image.src = project.thumbnail || (project.images && project.images[0]) || "";
   image.alt = safeText(project.title);
   image.loading = "lazy";
+
   imageWrap.appendChild(image);
 
   const name = document.createElement("div");
   name.className = "project-name";
   name.textContent = safeText(project.title);
+
   item.append(imageWrap, name);
+
   if (project.category) {
    const category = document.createElement("div");
    category.className = "project-category";
    category.textContent = safeText(project.category);
    item.appendChild(category);
   }
+
   item.addEventListener("click", () => openModal(project));
   projectGrid.appendChild(item);
  });
- pageNumber.textContent = String(currentPage).padStart(2, "0") + " / " + String(totalPages).padStart(2, "0");
+
+ pageNumber.textContent =
+  String(currentPage).padStart(2, "0") +
+  " / " +
+  String(totalPages).padStart(2, "0");
+
  prevBtn.disabled = currentPage === 1;
  nextBtn.disabled = currentPage === totalPages;
 }
+
+/* 프로젝트 데이터 불러오기 */
 async function loadProjects() {
  try {
   const response = await fetch("/data/projects.yml", {cache:"no-store"});
-  if (!response.ok) throw new Error("projects.yml을 불러오지 못했습니다.");
+
+  if (!response.ok) {
+   throw new Error("projects.yml을 불러오지 못했습니다.");
+  }
+
   projects = jsyaml.load(await response.text()) || [];
+
   if (!Array.isArray(projects)) projects = [];
+
   renderPage(1);
+
  } catch (error) {
-  projectGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#888;font-size:13px;padding:40px 0">프로젝트 데이터를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.</p>';
+  projectGrid.innerHTML =
+   '<p style="grid-column:1/-1;text-align:center;color:#888;font-size:13px;padding:40px 0">프로젝트 데이터를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.</p>';
+
   pageNumber.textContent = "01 / 01";
   prevBtn.disabled = true;
   nextBtn.disabled = true;
+
   console.error(error);
  }
 }
+
+/*
+ SOSO 데이터 읽기
+
+ data/soso.yml의 항목 제목 형식:
+ 목표와 방향 | goal_direction
+ 대표 소개 | Registered Architect
+ 경력 | career
+ 활동 | activities
+ 기타 | other
+ 위치 | location
+*/
+
 async function loadSoso() {
  try {
   const response = await fetch("/data/soso.yml", {cache:"no-store"});
-  if (!response.ok) throw new Error("soso.yml을 불러오지 못했습니다.");
-  const data = jsyaml.load(await response.text()) || {};
 
-  const goal = safeText(data.goal_direction).trim();
+  if (!response.ok) {
+   throw new Error("soso.yml을 불러오지 못했습니다.");
+  }
+
+  const raw = await response.text();
+  const lines = raw.split(/\r?\n/);
+
+  const data = {
+   goal_direction: [],
+   principal: [],
+   career: [],
+   activities: [],
+   other: [],
+   location: []
+  };
+
+  const keyMap = {
+   "goal_direction": "goal_direction",
+   "principal": "principal",
+   "registered architect": "principal",
+   "career": "career",
+   "activities": "activities",
+   "other": "other",
+   "location": "location"
+  };
+
+  let currentKey = null;
+  let currentItem = null;
+
+  lines.forEach(line => {
+   const trimmed = line.trim();
+
+   /* 항목 제목과 키 찾기 */
+   const sectionMatch = trimmed.match(/^([^|]+?)\s*\|\s*(.*?)\s*$/);
+
+   if (sectionMatch) {
+    const rightSide = sectionMatch[2].trim().toLowerCase();
+
+    if (keyMap[rightSide]) {
+     currentKey = keyMap[rightSide];
+     currentItem = null;
+     return;
+    }
+   }
+
+   if (!currentKey) return;
+
+   /* 경력 및 활동 데이터 */
+   if (currentKey === "career" || currentKey === "activities") {
+    const yearMatch = trimmed.match(/^-\s*year:\s*(.*?)\s*$/);
+
+    if (yearMatch) {
+     let year = yearMatch[1].trim();
+     year = year.replace(/^["']|["']$/g, "");
+
+     currentItem = {
+      year: year,
+      detail: ""
+     };
+
+     data[currentKey].push(currentItem);
+     return;
+    }
+
+    const detailMatch = trimmed.match(/^detail:\s*(.*?)\s*$/);
+
+    if (detailMatch && currentItem) {
+     let detail = detailMatch[1].trim();
+     detail = detail.replace(/^["']|["']$/g, "");
+     currentItem.detail = detail;
+    }
+
+    return;
+   }
+
+   /* 일반 텍스트 데이터 */
+   if (
+    currentKey === "goal_direction" ||
+    currentKey === "principal" ||
+    currentKey === "other" ||
+    currentKey === "location"
+   ) {
+    data[currentKey].push(line.replace(/^\s{0,2}/, ""));
+   }
+  });
+
+  function getText(key) {
+   return data[key].join("\n").trim();
+  }
+
+  /* 목표와 방향 */
+  const goal = getText("goal_direction");
+
   document.getElementById("goalDirection").textContent = goal;
   setSectionVisibility("goalSection", !!goal);
 
-  const principal = safeText(data.principal).trim();
-  const principalLines = principal.split(/\r?\n/);
-  const heading = (principalLines.shift() || "대표 마순석 | Registered Architect").trim();
-  const description = principalLines.join("\n").trim();
-  const parts = heading.split("|");
-  document.getElementById("principalName").textContent = (parts[0] || "대표 마순석").trim();
-  document.getElementById("principalPosition").textContent = (parts[1] || "Registered Architect").trim();
-  document.getElementById("principalDescription").textContent = description;
+  /* 대표 소개: 이름과 직함은 표시하지 않고 본문만 출력 */
+  const principal = getText("principal");
+
+  document.getElementById("principalDescription").textContent = principal;
   setSectionVisibility("principalSection", !!principal);
 
+  /* 주요 경력 */
   renderRows("careerRows", data.career);
-  setSectionVisibility("careerSection", Array.isArray(data.career) && data.career.length > 0);
 
+  setSectionVisibility(
+   "careerSection",
+   data.career.length > 0
+  );
+
+  /* 주요 활동 */
   renderRows("activityRows", data.activities);
-  setSectionVisibility("activitiesSection", Array.isArray(data.activities) && data.activities.length > 0);
 
-  const other = safeText(data.other).trim();
+  setSectionVisibility(
+   "activitiesSection",
+   data.activities.length > 0
+  );
+
+  /* 기타 */
+  const other = getText("other");
+
   document.getElementById("otherText").textContent = other;
   setSectionVisibility("otherSection", !!other);
 
-  document.getElementById("locationAddress").textContent = safeText(data.location);
+  /* 위치 */
+  const location = getText("location");
+
+  document.getElementById("locationAddress").textContent = location;
+
  } catch (error) {
-  console.error(error);
+  console.error("SOSO 데이터 오류:", error);
  }
 }
+
+/* 프로젝트 상세 모달 */
 function openModal(project) {
  activeProject = project;
  activeImageIndex = 0;
- const gallery = Array.isArray(project.images) && project.images.length ? project.images : [project.thumbnail].filter(Boolean);
+
+ const gallery =
+  Array.isArray(project.images) && project.images.length
+   ? project.images
+   : [project.thumbnail].filter(Boolean);
+
  if (!gallery.length) return;
+
  showModalImage();
  modal.classList.add("active");
 }
+
 function showModalImage() {
  if (!activeProject) return;
- const gallery = Array.isArray(activeProject.images) && activeProject.images.length ? activeProject.images : [activeProject.thumbnail].filter(Boolean);
+
+ const gallery =
+  Array.isArray(activeProject.images) && activeProject.images.length
+   ? activeProject.images
+   : [activeProject.thumbnail].filter(Boolean);
+
  if (!gallery.length) return;
- activeImageIndex = (activeImageIndex + gallery.length) % gallery.length;
+
+ activeImageIndex =
+  (activeImageIndex + gallery.length) % gallery.length;
+
  modalImage.src = gallery[activeImageIndex];
  modalImage.alt = safeText(activeProject.title);
+
  const description = safeText(activeProject.description);
- modalCaption.textContent = safeText(activeProject.title) + (description ? "\n" + description : "");
- modalCount.textContent = (activeImageIndex + 1) + " / " + gallery.length;
+
+ modalCaption.textContent =
+  safeText(activeProject.title) +
+  (description ? "\n" + description : "");
+
+ modalCount.textContent =
+  (activeImageIndex + 1) + " / " + gallery.length;
+
  document.getElementById("modalPrev").disabled = gallery.length < 2;
  document.getElementById("modalNext").disabled = gallery.length < 2;
 }
+
 function closeModal() {
  modal.classList.remove("active");
  modalImage.src = "";
  activeProject = null;
 }
-prevBtn.addEventListener("click", () => { if (currentPage > 1) { renderPage(currentPage - 1); window.scrollTo({top:0,behavior:"smooth"}); } });
-nextBtn.addEventListener("click", () => { const total = Math.ceil(projects.length / itemsPerPage); if (currentPage < total) { renderPage(currentPage + 1); window.scrollTo({top:0,behavior:"smooth"}); } });
-document.getElementById("modalPrev").addEventListener("click", () => { activeImageIndex--; showModalImage(); });
-document.getElementById("modalNext").addEventListener("click", () => { activeImageIndex++; showModalImage(); });
-document.getElementById("modalClose").addEventListener("click", closeModal);
-modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
-document.addEventListener("keydown", event => { if (event.key === "Escape") closeModal(); });
 
+/* 페이지 이동 */
+prevBtn.addEventListener("click", () => {
+ if (currentPage > 1) {
+  renderPage(currentPage - 1);
+  window.scrollTo({top:0, behavior:"smooth"});
+ }
+});
+
+nextBtn.addEventListener("click", () => {
+ const total = Math.ceil(projects.length / itemsPerPage);
+
+ if (currentPage < total) {
+  renderPage(currentPage + 1);
+  window.scrollTo({top:0, behavior:"smooth"});
+ }
+});
+
+/* 모달 이미지 이동 */
+document.getElementById("modalPrev").addEventListener("click", () => {
+ activeImageIndex--;
+ showModalImage();
+});
+
+document.getElementById("modalNext").addEventListener("click", () => {
+ activeImageIndex++;
+ showModalImage();
+});
+
+document.getElementById("modalClose").addEventListener("click", closeModal);
+
+modal.addEventListener("click", event => {
+ if (event.target === modal) closeModal();
+});
+
+document.addEventListener("keydown", event => {
+ if (event.key === "Escape") closeModal();
+});
+
+/* 상단 메뉴 이동 */
 const navLinks = document.querySelectorAll(".main-nav a");
 const logoLink = document.querySelector(".logo");
 const contentViews = document.querySelectorAll(".content-view");
+
 function changeView(targetId, clickedLink) {
  const targetView = document.getElementById(targetId);
+
  if (!targetView) return;
+
  contentViews.forEach(view => view.classList.remove("active"));
  navLinks.forEach(link => link.classList.remove("active"));
+
  targetView.classList.add("active");
- if (clickedLink) clickedLink.classList.add("active");
- else {
-  const matchingLink = document.querySelector('.main-nav a[data-view="' + targetId + '"]');
+
+ if (clickedLink) {
+  clickedLink.classList.add("active");
+ } else {
+  const matchingLink =
+   document.querySelector('.main-nav a[data-view="' + targetId + '"]');
+
   if (matchingLink) matchingLink.classList.add("active");
  }
+
  closeModal();
 }
-navLinks.forEach(link => link.addEventListener("click", event => {
- event.preventDefault();
- changeView(link.dataset.view, link);
-}));
+
+navLinks.forEach(link => {
+ link.addEventListener("click", event => {
+  event.preventDefault();
+  changeView(link.dataset.view, link);
+ });
+});
+
 logoLink.addEventListener("click", event => {
  event.preventDefault();
  changeView("projects", null);
  renderPage(1);
 });
+
+/* 홈페이지 시작 */
 (async function initialize() {
  if (typeof jsyaml === "undefined") {
-  projectGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#888;padding:40px 0">데이터 처리 도구를 불러오지 못했습니다. 페이지를 새로고침해 주세요.</p>';
+  projectGrid.innerHTML =
+   '<p style="grid-column:1/-1;text-align:center;color:#888;padding:40px 0">데이터 처리 도구를 불러오지 못했습니다. 페이지를 새로고침해 주세요.</p>';
+
   return;
  }
- await Promise.all([loadProjects(), loadSoso()]);
+
+ await Promise.all([
+  loadProjects(),
+  loadSoso()
+ ]);
 })();
 </script>
+
 </body>
 </html>
