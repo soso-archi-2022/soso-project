@@ -4,7 +4,7 @@
   images:
     - /images/담헌천문_달빛마당_입면도-1.jpg
   description: 프로젝트 설명 입력
-- title: 2023_일반공모_서북구문화원
+- title: 2023_일반공모_서북구문화원_참여작
   category: 공공건축
   thumbnail: /images/20231020_140552.png
   images:
@@ -22,12 +22,17 @@
   images:
     - /images/낙동강_방문자센터_2-1.png
   description: 홈페이지 연동 테스트
-- title: "2024_일반공모_개봉1동 어울림복합플랫폼 "
+- title: 2024_일반공모_개봉1동 어울림복합플랫폼_참여작
   category: 공공건축
   thumbnail: /images/따뜻한_벽돌의_현대_건축과_거리_풍경-1.png
   images:
     - /images/따뜻한_벽돌의_현대_건축과_거리_풍경.png
   description: 홈페이지 연동 테스트
-- description: 홈페이지 연동 테스트
-- description: 홈페이지 연동 테스트
+- title: 2024_일반공모_수원시 금곡동 공공도서관_참여작
+  thumbnail: /images/금곡동 공공도서관.jpg
+  images:
+    - /images/금곡동 공공도서관-1.jpg
+  description: 홈페이지 연동 테스트
+- title: "2024"
+  description: 홈페이지 연동 테스트
 - description: 홈페이지 연동 테스트
