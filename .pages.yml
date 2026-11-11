@@ -1,3 +1,4 @@
+
 media:
   input: images
   output: /images
@@ -51,32 +52,12 @@ content:
         type: text
       - name: career
         label: 주요 경력
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{year} - {detail}"
-        fields:
-          - name: year
-            label: 연도
-            type: string
-          - name: detail
-            label: 경력 내용
-            type: string
+        type: text
+        description: 경력 내용을 자유롭게 입력하세요.
       - name: activities
         label: 주요 활동
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{year} - {detail}"
-        fields:
-          - name: year
-            label: 연도
-            type: string
-          - name: detail
-            label: 활동 내용
-            type: string
+        type: text
+        description: 활동 내용을 자유롭게 입력하세요.
       - name: other
         label: 기타
         type: text
