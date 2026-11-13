@@ -563,9 +563,9 @@ footer{
 </h2>
   
   <div class="location-contact">
-   T. <a href="tel:0269537173">02-6953-7173</a><br>
-   F. 02-6953-7174<br>
-   E. <a href="mailto:sosotelling@naver.com">sosotelling@naver.com</a>
+   T. <a id="locationPhone" href="tel:0269537173">02-6953-7173</a><br>
+   F. <span id="locationFax">02-6953-7174</span><br>
+   E. <a id="locationEmail" href="mailto:sosotelling@naver.com">sosotelling@naver.com</a>
   </div>
  </section>
 
@@ -767,6 +767,24 @@ async function loadSoso() {
   const location = data.location || "";
 
   document.getElementById("locationAddress").textContent = location;
+
+  const phone = safeText(data.contact_phone).trim();
+  const fax = safeText(data.contact_fax).trim();
+  const email = safeText(data.contact_email).trim();
+
+  if (phone) {
+   const phoneLink = document.getElementById("locationPhone");
+   phoneLink.textContent = phone;
+   phoneLink.href = "tel:" + phone.replace(/[^0-9+]/g, "");
+  }
+  if (fax) {
+   document.getElementById("locationFax").textContent = fax;
+  }
+  if (email) {
+   const emailLink = document.getElementById("locationEmail");
+   emailLink.textContent = email;
+   emailLink.href = "mailto:" + encodeURIComponent(email).replace("%40", "@");
+  }
 
  } catch (error) {
   console.error("SOSO 데이터 오류:", error);
