@@ -49,6 +49,9 @@ content:
       - name: principal
         label: 대표 소개
         type: text
+      - name: license_education
+        label: 자격 &교육
+        type: text
       - name: career
         label: 주요 경력
         type: text
