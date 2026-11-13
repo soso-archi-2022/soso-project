@@ -663,6 +663,7 @@ async function loadProjects() {
   projects = jsyaml.load(await response.text()) || [];
 
   if (!Array.isArray(projects)) projects = [];
+  projects.reverse();
 
   renderPage(1);
 
