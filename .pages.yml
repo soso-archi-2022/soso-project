@@ -57,6 +57,12 @@ content:
         label: 주요 활동
         type: text
         description: 활동 내용을 자유롭게 입력하세요.
+      - name: construction_supervision
+        label: 공사감리 주요 프로젝트
+        type: text
+      - name: education_qualification
+        label: 건축사 실무교육
+        type: text
       - name: other
         label: 기타
         type: text
