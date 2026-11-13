@@ -514,6 +514,11 @@ footer{
    <div class="profile-description" id="principalDescription"></div>
   </div>
 
+  <div class="soso-section">
+   <h2 class="soso-section-title"><span>자격 &amp;교육</span><span class="title-divider">|</span><span class="title-english">License &amp; Education</span></h2>
+   <div class="soso-text" id="licenseEducation"></div>
+  </div>
+
   <div class="soso-section" id="careerSection">
    <h2 class="soso-section-title"><span>주요 경력</span><span class="title-divider">|</span><span class="title-english">CAREER</span></h2>
    <div class="soso-text" id="careerText"></div>
@@ -750,6 +755,9 @@ async function loadSoso() {
 
   document.getElementById("principalDescription").textContent = principal;
   setSectionVisibility("principalSection", !!principal.trim());
+
+  document.getElementById("licenseEducation").textContent =
+   safeText(data.license_education).trim();
 
      /* 주요 경력: 자유 문장 표시 */
    const career = safeText(data.career);
