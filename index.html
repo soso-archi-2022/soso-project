@@ -208,6 +208,10 @@ header{
  gap:9px;
 }
 
+.soso-section-title-wrap{
+ flex-wrap:wrap;
+}
+
 .title-divider{
  color:#477653;
  font-size:12px;
@@ -299,15 +303,6 @@ header{
  color:#777;
  line-height:2.2;
  letter-spacing:.3px;
-}
-
-.location-contact a{
- color:inherit;
- text-decoration:none;
-}
-
-.location-contact a:hover{
- color:#477653;
 }
 
 footer{
@@ -529,6 +524,14 @@ footer{
    <div class="soso-text" id="activityText"></div>
   </div>
 
+  <div class="soso-section">
+   <h2 class="soso-section-title soso-section-title-wrap"><span>공사감리 주요 프로젝트</span><span class="title-divider">|</span><span class="title-english">Construction Supervision Project</span></h2>
+  </div>
+
+  <div class="soso-section">
+   <h2 class="soso-section-title soso-section-title-wrap"><span>건축사 실무교육</span><span class="title-divider">|</span><span class="title-english">Education &amp; Qualification</span></h2>
+  </div>
+
   <div class="soso-section" id="otherSection" hidden>
   <h2 class="soso-section-title"><span>기타</span><span class="title-divider">|</span><span class="title-english">OTHERS</span></h2>
    <div class="soso-text" id="otherText"></div>
@@ -561,12 +564,12 @@ footer{
   <span class="title-divider">|</span>
   <span class="title-english">CONTACT</span>
 </h2>
-  
   <div class="location-contact">
-   T. <a id="locationPhone" href="tel:0269537173">02-6953-7173</a><br>
+   T. <span id="locationPhone">02-6953-7173</span><br>
    F. <span id="locationFax">02-6953-7174</span><br>
-   E. <a id="locationEmail" href="mailto:sosotelling@naver.com">sosotelling@naver.com</a>
+   E. <span id="locationEmail">sosotelling@naver.com</span>
   </div>
+  
  </section>
 
 </main>
@@ -767,23 +770,18 @@ async function loadSoso() {
 
   document.getElementById("locationAddress").textContent = location;
 
-  const phone = safeText(data.contact_phone).trim();
-  const fax = safeText(data.contact_fax).trim();
-  const email = safeText(data.contact_email).trim();
+  const contactFields = {
+   locationPhone: data.contact_phone,
+   locationFax: data.contact_fax,
+   locationEmail: data.contact_email
+  };
 
-  if (phone) {
-   const phoneLink = document.getElementById("locationPhone");
-   phoneLink.textContent = phone;
-   phoneLink.href = "tel:" + phone.replace(/[^0-9+]/g, "");
+  for (const [id, value] of Object.entries(contactFields)) {
+   if (typeof value === "string" && value.trim()) {
+    document.getElementById(id).textContent = value.trim();
+   }
   }
-  if (fax) {
-   document.getElementById("locationFax").textContent = fax;
-  }
-  if (email) {
-   const emailLink = document.getElementById("locationEmail");
-   emailLink.textContent = email;
-   emailLink.href = "mailto:" + encodeURIComponent(email).replace("%40", "@");
-  }
+
 
  } catch (error) {
   console.error("SOSO 데이터 오류:", error);
