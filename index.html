@@ -276,6 +276,24 @@ header{
  white-space:pre-line;
 }
 
+.location-map{
+ margin:0 0 30px;
+}
+
+.location-map iframe{
+ display:block;
+ width:100%;
+ height:clamp(250px, 42vw, 360px);
+ border:0;
+}
+
+.location-map a{
+ display:inline-block;
+ margin-top:10px;
+ color:#477653;
+ font-size:12px;
+}
+
 .location-contact{
  font-size:12px;
  color:#777;
@@ -527,7 +545,17 @@ footer{
   <div class="location-address" id="locationAddress">
    서울시 구로구 디지털로27가길 17, 303호
   </div>
-  
+
+  <div class="location-map">
+   <iframe
+    title="소소 건축사사무소 위치 지도"
+    src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EA%B5%AC%EB%A1%9C%EA%B5%AC%20%EB%94%94%EC%A7%80%ED%84%B8%EB%A1%9C27%EA%B0%80%EA%B8%B8%2017&amp;z=16&amp;output=embed"
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin">
+   </iframe>
+   <a href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EA%B5%AC%EB%A1%9C%EA%B5%AC%20%EB%94%94%EC%A7%80%ED%84%B8%EB%A1%9C27%EA%B0%80%EA%B8%B8%2017" target="_blank" rel="noopener noreferrer">네이버 지도에서 보기</a>
+  </div>
+
 <h2 class="soso-section-title">
   <span>연락처</span>
   <span class="title-divider">|</span>
